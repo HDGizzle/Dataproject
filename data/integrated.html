@@ -11,9 +11,11 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" type="text/css" href="integrated.css">
 <script src="//d3js.org/d3.v5.min.js"></script>
-<script src="barchart.js"></script>
+
 
 <body>
+<script src="barchart.js"></script>
+
 
 <!-- Navbar (sit on top) -->
 <div class="w3-top">
@@ -48,7 +50,7 @@ data toch behoorlijk zijn best gedaan om mij flink te tarten. Er was één trend
  vanwege een incorrecte github link waar je je niet bewust van bent. Shit happens... Eens zien of we het deze week voor elkaar krijgen om wèl een voldoende te halen...</p>
   <div class="w3-row">
     <div class="w3-col m6 w3-center w3-padding-large">
-      <img src="pasfoto.jpg" class="w3-round w3-image " alt="Photo of Me" width="500" height="333">
+      <img src="010101.jpg" class="w3-round w3-image " alt="Photo of Me" width="500" height="333">
     </div>
 
     <!-- personal info + photo -->
@@ -87,7 +89,26 @@ data toch behoorlijk zijn best gedaan om mij flink te tarten. Er was één trend
     it is possible to live good lives without costing the Earth.
   </em></p>
   <plot align="center"></plot>
+  <select id="d3-dropdown">
+    <option value="Carbohydrate, by difference in gram">"Carbohydrates (gram)"</option>
+    <option value="Energy in kcal">"Energy (kcal)"</option>
+    <option value="Fiber, total dietary in gram">"Fiber (gram)"</option>
+    <option value="Folate, DFE in microgram">"Folate/B11 (microgram)"</option>
+    <option value="Iron, Fe in milligram">"Iron (milligram)"</option>
+    <option value="Magnesium, Mg in milligram">"Magnesium (milligram)"</option>
+    <option value="Niacin in milligram">"Niacin/B3 (milligram)"</option>
+    <option value="Phosphorus, P in milligram">"Phosphorus (milligram)"</option>
+    <option value="Potassium, K in milligram">"Potassium (milligram)"</option>
+    <option value="Riboflavin in milligram">"Riboflavin/B2 (milligram)"</option>
+    <option value="Sugars, total in gram">"Sugars (gram)"</option>
+    <option value="Thiamin in milligram">"Thiamin/B1 (milligram)"</option>
+    <option value="Vitamin A, RAE in microgram">"Vitamin A (microgram)"</option>
+    <option value="Vitamin B-6 in milligram">"Vitamin B-6 (milligram)"</option>
+    <option value="Vitamin C, total ascorbic acid in milligram">"Vitamin C (milligram)"</option>
+  </select>
+
       <svg width="1000" height="500"></svg>
+          <p id="selected-dropdown"></p>
   <script>
 // function to change bar chart when new nutrient is chosen in dropdown
     d3.select("select")
