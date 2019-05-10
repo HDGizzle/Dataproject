@@ -123,15 +123,24 @@ data toch behoorlijk zijn best gedaan om mij flink te tarten. Er was één trend
           var fruitnames = Object.keys(data);
 // initialize reformatted data list
           var figuredata = []
+
+        d3.json("fruitcolors.json").then(function (colors) {
+          console.log(colors);
+
 // Reformat data to list of dicts with universal keys
           for (i = 0; i < fruitnames.length; i++) {
             var nutrient = data[fruitnames[i]][selected];
-            var dict = {"Fruit": fruitnames[i], "nutrient": nutrient}
+            color = colors[fruitnames[i]]["color"]
+
+            var dict = {"Fruit": fruitnames[i], "nutrient": nutrient, "color": color}
             figuredata.push(dict);
             };
+            console.log(figuredata);
 // call barchart function
           BarChart.draw(figuredata, selected);
         })
+      })
+
       });
   </script>
 </div>

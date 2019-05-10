@@ -114,17 +114,6 @@ df = df.loc[:, (df != 0).any(axis=0)]
 # df = pd.DataFrame(df, columns=headers)
 fruitnames = df.index
 
-colordict = []
-
-for fruit in fruitnames:
-    for key, value in colors.items():
-        for i in value:
-            if i == fruit:
-                temp = {fruit : {"color": key}}
-                colordict.append(temp)
-
-print(colordict["Apple"])
-
 
 jsonfile = json.loads(df.to_json(orient="index"))
 # jsonfile = json.loads(df.to_json(orient="table"))
@@ -135,3 +124,14 @@ jsonfile = json.loads(df.to_json(orient="index"))
 
 with open('nutrients.json', 'w') as outfile:
     json.dump(jsonfile, outfile)
+
+colordict = {}
+
+for fruit in fruitnames:
+    for key, value in colors.items():
+        for i in value:
+            if i == fruit:
+                colordict[fruit] = {"color": key}
+
+with open('fruitcolors.json', 'w') as outfile:
+    json.dump(colordict, outfile)

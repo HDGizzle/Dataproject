@@ -50,7 +50,7 @@ var BarChart = {
       .attr("y", function(d) { return y(d.nutrient); })
       .attr("width", x.bandwidth())
       .attr("height", function(d) { return height - y(d.nutrient); })
-      .attr("fill", function(d) { return colours(d.Fruit); })
+      .attr("fill", function(d) { return d.color; })
       .on('mouseover', (d) => {
         tooltip.transition().duration(200).style('opacity', 0.9);
         tooltip.html((d.Fruit) + "<br>" + (nutrientname) + (": ") + (d.nutrient))
