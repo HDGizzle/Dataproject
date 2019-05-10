@@ -7,6 +7,7 @@ I will visualize the nutritional values of fruits for every nutrient that is pre
 
 ### Sketches
 
+Current progress: https://hdgizzle.github.io/Dataproject/data/fruitradarchart.html
 
 ### Main features - MVP
 The main features of this data project will be the ability to compare the micro nutrients head to head for each fruit by means of a bar chart. 
