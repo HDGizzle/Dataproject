@@ -1,0 +1,32 @@
+fibermax = 30
+folatemax = 300
+ironmax = 16
+magnesiummax = 325
+niacinmax = 15
+potassiummax = 3000
+riboflavin = 1.3
+thiamin = 1
+vitamin A = 800
+vitamin B6 = 1.3
+vitamin C = 80
+
+
+phosphorusmax = 700
+
+
+colors = {
+// red
+"#ff0000": ["Cherry", "Cranberry", "Pomegranate", "Strawberry", "Watermelon"],
+// orange
+"#EE9A00": ["Apricot", "Mango", "MelonCantaloupe", "Nectarine", "Orange", "Peach", "Tangerine"],
+// white
+"#f2f5f1": ["Apple", "Banana", "Lychee", "Pear"],
+// purple
+"#b026a9": ["Blackberry", "Blue Grapes", "Blueberry"],
+//pink
+"#FF69B4": ["Grapefruit", "Raspberry"],
+// green
+"#00ad00": ["Green Grapes", "KiwiGreen", "MelonHoneydew"],
+// yellow
+"#fdfe25": ["KiwiGold", "Passionfruit", "Plum"]
+}
