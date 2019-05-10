@@ -7,8 +7,10 @@ I will visualize the nutritional values of fruits for every nutrient that is pre
 
 ### Sketches
 
+Current progress: https://hdgizzle.github.io/Dataproject/data/fruitradarchart.html
+
 ### Main features - MVP
-The main feature is to compare all fruits for each nutrient. So you select for example vitamin C and get a bar chart for all fruits and the daily required percentage of vitamin C per 100 grams. 
+The main features of this data project will be the ability to compare the micro nutrients head to head for each fruit by means of a bar chart. 
 ### Main features - optional
 On top of that I want to get an average percentage of to what extent 100 grams of each fruit satisfies your daily needs in terms of all nutrients present in fruit. This will identify the "real" superfruits if they are out there. If there is time left, I also want to make some kind of indication of the carbon food print (for all the vegan hippies out there). I currently have the idea to do this based on location. You enter your country and the distance between you and the place where the fruit is grown will determine the eco-friendliness of the fruit. I would also like to incorporate a nutrient-to-calorie ratio, as some fruits are very nutritious but also very high on sugar. 
 
