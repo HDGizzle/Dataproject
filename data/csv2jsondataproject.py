@@ -2,6 +2,25 @@ import csv
 import json
 import pandas as pd
 
+colors = {
+# red
+"#ff0000": ["Cherry", "Cranberry", "Pomegranate", "Strawberry", "Watermelon"],
+# orange
+"#EE9A00": ["Apricot", "Mango", "MelonCantaloupe", "Nectarine", "Orange", "Peach", "Tangerine"],
+# white
+"#f2f5f1": ["Apple", "Banana", "Lychee", "Pear"],
+# purple
+"#b026a9": ["Blackberry", "Blue Grapes", "Blueberry"],
+# pink
+"#FF69B4": ["Grapefruit", "Raspberry"],
+# green
+"#00ad00": ["Green Grapes", "KiwiGreen", "MelonHoneydew"],
+# yellow
+"#fdfe25": ["KiwiGold", "Passionfruit", "Plum"]
+}
+
+
+
 # call initial file
 csv_data = "Apple.csv"
 
@@ -38,7 +57,6 @@ df.set_index('Nutrient', inplace=True)
 # change column name
 df = df.rename(columns = {"1Value per 100 g": fruitname})
 
-print(df)
 
 
 
@@ -94,13 +112,26 @@ df = df.transpose()
 df = df.loc[:, (df != 0).any(axis=0)]
 
 # df = pd.DataFrame(df, columns=headers)
-print(df)
+fruitnames = df.index
+
+colordict = []
+
+for fruit in fruitnames:
+    for key, value in colors.items():
+        for i in value:
+            if i == fruit:
+                temp = {fruit : {"color": key}}
+                colordict.append(temp)
+
+print(colordict["Apple"])
+
+
 jsonfile = json.loads(df.to_json(orient="index"))
 # jsonfile = json.loads(df.to_json(orient="table"))
 
 
 
-print(jsonfile)
+# print(jsonfile)
 
 with open('nutrients.json', 'w') as outfile:
     json.dump(jsonfile, outfile)
