@@ -182,6 +182,7 @@
 // initialize reformatted data list
           var figuredata = []
 
+          console.log(figuredata);
         d3.json("fruitcolors.json").then(function (colors) {
           console.log(colors);
 
@@ -194,6 +195,16 @@
             figuredata.push(dict);
             };
             console.log(figuredata);
+
+            sortArrayOfObjects = (arr, key) => {
+                return arr.sort((a, b) => {
+                    return a[key] - b[key];
+                });
+            };
+
+            console.log(sortArrayOfObjects(figuredata, "nutrient"));
+
+
 // call barchart function
           BarChart.draw(figuredata, selected);
         })
