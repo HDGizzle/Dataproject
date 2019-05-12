@@ -56,7 +56,17 @@ var BarChart = {
         tooltip.html((d.Fruit) + "<br>" + (nutrientname) + (": ") + (d.nutrient))
         .style('left', `${d3.event.layerX}px`)
         .style('top', `${(d3.event.layerY - 28)}px`);})
-      .on('mouseout', () => tooltip.transition().duration(500).style('opacity', 0));
+      .on('mouseout', () => tooltip.transition().duration(500).style('opacity', 0))
+      .on("mouseover", function(d, i) {
+    var xPos = +d3.select(this).attr("x")
+    var wid = +d3.select(this).attr("width");
+    d3.select(this).attr("x", xPos - 10).attr("width", wid + 20);
+}).on("mouseout", function() {
+    d3.select(this).attr("x", function(d) {
+            return x(d.Fruit)
+        })
+        .attr("width", x.bandwidth());
+});
 
 
    }
