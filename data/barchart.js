@@ -1,7 +1,7 @@
 var BarChart = {
   draw: function(figuredata, nutrientname) {
 // define svg parameters
-  var svg = d3.select("svg"),
+  var svg = d3.select("#histosvg"),
     margin = {top: 20, right: 20, bottom: 60, left: 80},
     width = +svg.attr("width") - margin.left - margin.right,
     height = +svg.attr("height") - margin.top - margin.bottom;
