@@ -51,6 +51,10 @@
        <option>Choose a fruit</option>
    </select>
 
+   <select id="Fruitselecter2">
+       <option>Choose a fruit</option>
+   </select>
+
    <div id="chart"></div>
    <script>
      var width = 1000
@@ -82,13 +86,19 @@
        console.log(nutrienttypes);
      //
        var select = document.getElementById("Fruitselecter");
+       var select2 = document.getElementById("Fruitselecter2");
 
        for(var i = 0; i < fruitnames.length; i++) {
            var opt = fruitnames[i];
            var el = document.createElement("option");
+           var el2 = document.createElement("option");
            el.textContent = opt;
            el.value = opt;
+           el2.textContent = opt;
+           el2.value = opt;
+           select2.appendChild(el2);
            select.appendChild(el);
+
        }
      // recommended daily maxes of relevant nutrients
        maxes = [30, 300, 325, 15, 3000, 1.3, 1, 800, 1.3, 80]
@@ -96,8 +106,10 @@
        d3.select("#Fruitselecter").on("change",function(d){
 
          var selected = d3.select("#Fruitselecter").node().value;
+         var selected2 = d3.select("#Fruitselecter2").node().value;
 
          data = []
+         data2 = []
 
          factor = 4
 
@@ -105,20 +117,26 @@
          for (i = 0; i < nutrienttypes.length; i++) {
 
            value = datas[selected][nutrienttypes[i]] * factor;
+           value2 = datas[selected2][nutrienttypes[i]] * factor;
 
            name = nutrienttypes[i];
 
            max = maxes[i]
 
            var dict = {"nutrient": name, "value": value, "max": max}
+           var dict2 = {"nutrient": name, "value": value2, "max": max}
+
 
            data.push(dict);
+           data2.push(dict2);
          };
 
          dataz = []
+         dataz2 = []
          dataz.push(data);
+         dataz2.push(data2);
 
-         RadarChart.draw("#chart", dataz, config);
+         RadarChart.draw("#chart", dataz, config, dataz2);
        });
 
        // var svg = d3.select('body')

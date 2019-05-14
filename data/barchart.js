@@ -51,23 +51,19 @@ var BarChart = {
       .attr("width", x.bandwidth())
       .attr("height", function(d) { return height - y(d.nutrient); })
       .attr("fill", function(d) { return d.color; })
-      .on('mouseover', (d) => {
+      .style("fill-opacity", .7)
+      .on("mouseover", function(d, i) {
+        var xPos = +d3.select(this).attr("x")
+        var wid = +d3.select(this).attr("width");
+        d3.select(this).attr("x", xPos - 10).attr("width", wid + 20);
         tooltip.transition().duration(200).style('opacity', 0.9);
         tooltip.html((d.Fruit) + "<br>" + (nutrientname) + (": ") + (d.nutrient))
         .style('left', `${d3.event.layerX}px`)
         .style('top', `${(d3.event.layerY - 28)}px`);})
-      .on('mouseout', () => tooltip.transition().duration(500).style('opacity', 0))
-      .on("mouseover", function(d, i) {
-    var xPos = +d3.select(this).attr("x")
-    var wid = +d3.select(this).attr("width");
-    d3.select(this).attr("x", xPos - 10).attr("width", wid + 20);
-}).on("mouseout", function() {
+      .on("mouseout", function() {
     d3.select(this).attr("x", function(d) {
-            return x(d.Fruit)
-        })
+            return x(d.Fruit)})
         .attr("width", x.bandwidth());
-});
-
-
+        tooltip.transition().duration(500).style('opacity', 0)});
    }
 };

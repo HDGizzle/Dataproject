@@ -1,5 +1,5 @@
 var RadarChart = {
-  draw: function(id, d, cfg){
+  draw: function(id, d, cfg, d2){
 // define axes and circle parameters
   var allAxis = (d[0].map(function(i, j){return i.nutrient}));
   var total = allAxis.length;
@@ -173,5 +173,54 @@ var RadarChart = {
   		.on("mouseout", function(d){ tooltip.style("display", "none");});
     series++;
   });
+
+  if (typeof d2 !== "undefined"){
+    d2.forEach(function(y, x){
+      g.selectAll(".nodes")
+      .data(y).enter()
+      .append("svg:circle")
+      .attr("class", "radar-chart-serie"+series)
+      .attr('r', cfg.radius)
+      .attr("alt", function(j){return Math.max(j.value, 0)})
+      .attr("cx", function(j, i){
+        if (j.value > j.max) {
+          dataValues.push([
+          cfg.w/2*(1-(parseFloat(1)*cfg.factor*Math.sin(i*cfg.radians/total))),
+          cfg.h/2*(1-(parseFloat(1)*cfg.factor*Math.cos(i*cfg.radians/total)))
+          ]);
+          return cfg.w/2*(1-(1)*cfg.factor*Math.sin(i*cfg.radians/total));
+        }
+        else {
+          dataValues.push([
+          cfg.w/2*(1-(parseFloat(Math.max(j.value, 0))/j.max)*cfg.factor*Math.sin(i*cfg.radians/total)),
+          cfg.h/2*(1-(parseFloat(Math.max(j.value, 0))/j.max)*cfg.factor*Math.cos(i*cfg.radians/total))
+          ]);
+          return cfg.w/2*(1-(Math.max(j.value, 0)/j.max)*cfg.factor*Math.sin(i*cfg.radians/total));
+        }
+      })
+      .attr("cy", function(j, i){
+        if (j.value > j.max) {
+          return cfg.h/2*(1-(1)*cfg.factor*Math.cos(i*cfg.radians/total));
+        }
+        else {
+          return cfg.h/2*(1-(Math.max(j.value, 0)/j.max)*cfg.factor*Math.cos(i*cfg.radians/total));
+        }
+      })
+      .attr("data-id", function(j){return j.nutrient})
+      .style("fill", "#fff")
+      .style("stroke-width", "2px")
+      .style("stroke", cfg.color(series)).style("fill-opacity", .9)
+      .on('mouseover', function (d){
+        tooltip.style("left", d3.event.pageX - 40 + "px")
+          .style("top", d3.event.pageY - 80 + "px")
+          .style("display", "inline-block")
+          .html((d2.nutrient) + "<br><span>" + (d2.value) + "</span>");
+      })
+        .on("mouseout", function(d){ tooltip.style("display", "none");});
+      series++;
+    });
+  }
+
+
   }
 };
