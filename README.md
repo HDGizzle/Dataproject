@@ -7,7 +7,7 @@ I will visualize the nutritional values of fruits for every nutrient that is pre
 
 ### Sketches
 
-Current progress: PLEASE MIND: when selecting the first figure, please select the second dropdown first if you want a double "web" to be drawn into the svg. I will fix this later on! 
+Current progress: PLEASE MIND: when selecting the first figure, please select the second dropdown first if you want a double "web" to be drawn into the svg. I will fix this later on! The figure radarchart figure also does not yet contain a legend, but I will add this as soon as i can. 
 https://hdgizzle.github.io/Dataproject/data/integrated.html
 
 ### Main features - MVP
