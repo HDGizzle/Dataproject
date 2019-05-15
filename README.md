@@ -3,8 +3,7 @@
 Today's world is increasingly revolving around the healthy lifestyle social media and society is advertising for. However many false or unfair claims are made about the contents of certain fruits or vegetables. Superfruits do not exist, and if they do, they are not the fruits that people currently consider to be superfood. But what if there was a website on which you could see all the fruits and their nutritional values?
 
 ## Solution
-I will visualize the nutritional values of fruits for every nutrient that is present and make it possible to visually compare fruits head to head against each other. 
-
+The current project will visualize the nutrients in fruits and makes the user able to see for himself which fruits contain high amounts of certain nutrients, but also to compare fruits head to head so that conclusions can be drawn about the true health benefits of certain fruits. The user should be able to see the differences and the qualities of fruits in a matter of moments by looking at the visualizations presented in the project. 
 ### Sketches
 
 Current progress: PLEASE MIND: when selecting the first figure, please select the second dropdown first if you want a double "web" to be drawn into the svg. I will fix this later on! The figure radarchart figure also does not yet contain a legend, but I will add this as soon as i can. 
