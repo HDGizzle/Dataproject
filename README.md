@@ -5,7 +5,8 @@ Today's world is increasingly revolving around the healthy lifestyle social medi
 ## Solution
 The current project will visualize the nutrients in fruits and makes the user able to see for himself which fruits contain high amounts of certain nutrients, but also to compare fruits head to head so that conclusions can be drawn about the true health benefits of certain fruits. The user should be able to see the differences and the qualities of fruits in a matter of moments by looking at the visualizations presented in the project. 
 ### Sketches
-![](images/barchartexample.png)
+<img src="images/barchartexample.PNG" height="300">
+<img src="images/radarchartexample.PNG" height="300">
 
 Current progress: PLEASE MIND: when selecting the first figure, please select the second dropdown first if you want a double "web" to be drawn into the svg. I will fix this later on! The figure radarchart figure also does not yet contain a legend, but I will add this as soon as i can. 
 https://hdgizzle.github.io/Dataproject/data/integrated.html
