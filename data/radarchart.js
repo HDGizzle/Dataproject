@@ -32,7 +32,7 @@ var RadarChart = {
      .style("stroke-width", "0.3px")
      .attr("transform", "translate(" + (cfg.w/2-levelFactor) + ", " + (cfg.h/2-levelFactor) + ")");
   }
-// draw the percentual values of the web (20, 40, 60, 80, 100)
+// draw the percentual values of the graph
   for(var j=0; j<cfg.levels; j++){
     var levelFactor = cfg.factor*radius*((j+1)/cfg.levels);
     g.selectAll(".levels")
@@ -78,10 +78,10 @@ var RadarChart = {
     .attr("y", function(d, i){return cfg.h/2*(1-Math.cos(i*cfg.radians/total))-20*Math.cos(i*cfg.radians/total);});
 // draw and color data area - change opacity when hovered over
 
-  if (typeof d !== "undefined"){
+  if (typeof d !== undefined){
     WebDrawer(d, g, cfg, total, tooltip);
   };
-  if (typeof d2 !== "undefined"){
+  if (typeof d2 !== undefined){
     WebDrawer(d2, g, cfg, total, tooltip);
   };
   }
