@@ -36,5 +36,5 @@ May 14th (day 17, working at night): Today couldn't have gone any better, as I o
 
 May 15th (day 18, working at night): Because of the reply on Martijn's e-mail, I started to get my readme in place to make it suitable for fitting the project requirements. I also made a start in DESIGN.MD. 
 
-May 17th (day 19): Today I got my logbook in place. I tried to enter my progression as accurately as I could by looking back in my files and their save history. 
+May 17th (day 19): Today I got my logbook in place. I tried to enter my progression as accurately as I could by looking back in my files and their save history. I put the web drawing code into a function so that the code is not written twice. Furthermore I got terribly stuck on the functionality of the two webs showing at the same time, however, I solved how to fix it which I will be doing tomorrow. 
 
