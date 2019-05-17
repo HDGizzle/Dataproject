@@ -26,7 +26,15 @@ May 6th (day 12, working at night): I am super tired today, so I decide to do so
 
 May 7th (day 13, working at night): Another couple of hours spent on incorporating the colors. I finally figure the easiest way to do it is to add a key value with a hex color as value. I write some script to make this possible and implement it. 
 
-May 10th (day 14, 
-3 4 5 
-10 11 12
-17 18 19 
+May 10th (day 14): An absolutely horrible day. I try to merge both figures into my html script. However I cannot get it to work properly, as the bar chart draws over the radar chart. It has something to do with the way I define my svg's. I try to fix it all day, and even though I learn a lot I still cannot manage to get it done. 
+
+May 11th (day 15): I get everything I was stuck on the day before done within an hour. Apparently I had to give the dropdowns different names so that I could separately call them in my functions. Good nights of sleep are so important... Now that everything is properly in place and working, I start focusing on the looks of my figures again. I make the bars a little translucent and style the tooltips differently. I also try to make the bars change color and expand a little. However I run into the problem that either my bars dont expand, or my tooltip does not show. 
+
+May 12th (day 16): Basically 100 grams of fruit is hardly satisfying any needs except vitamin C, so I decide to add a factor variable. The integer that is entered will multiply the 100 grams, making the radar 'web' more meaningful and appealing. Especially now the bars have different colors, the bar chart looks really messy. Therefore I roam the internet in order to learn how to "sort" an object by values. I say "sort" because it is not actually possible to really sort an object. I manage to sort the bars, and the sorted bar charts now look much better than they did before. I also figure that I should program a second web in the radar chart, so that fruits can be compared head to head instead of only one at a time. 
+
+May 14th (day 17, working at night): Today couldn't have gone any better, as I out of the blue came up with how to program a second web into radar chart. However it does not work perfectly yet, as you first have to select the second drop down before the first one in order to even make it work. I also send an e-mail with the request for feedback on my progression. 
+
+May 15th (day 18, working at night): Because of the reply on Martijn's e-mail, I started to get my readme in place to make it suitable for fitting the project requirements. I also made a start in DESIGN.MD. 
+
+May 17th (day 19): Today I got my logbook in place. I tried to enter my progression as accurately as I could by looking back in my files and their save history. 
+
