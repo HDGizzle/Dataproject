@@ -188,8 +188,6 @@ var WebDrawer = function(input, g, cfg, total, tooltip) {
 }
 
 
-
-
 var DropdownObject = function(ddName, datas, nutrienttypes, maxes, data, grams) {
 var selected = d3.select(ddName).node().value;
 // loop through nutrition dict of each fruit
