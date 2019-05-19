@@ -38,3 +38,7 @@ May 15th (day 18, working at night): Because of the reply on Martijn's e-mail, I
 
 May 17th (day 19): Today I got my logbook in place. I tried to enter my progression as accurately as I could by looking back in my files and their save history. I put the web drawing code into a function so that the code is not written twice. Furthermore I got terribly stuck on the functionality of the two webs showing at the same time, however, I solved how to fix it which I will be doing tomorrow. 
 
+May 18th (day 20): I fixed the double web problem, and now it displays either one or two webs. I also came up with the idea to skip the factor variable. Instead, I am going to let the user decide how many grams they want to compare for, by adding a box where you can fill in an amount of grams. I made quite a good start, however it is not fully functional because the webs do not update yet if you only change the amount of grams and not the fruit types. 
+
+May 19th (day 21): I fixed the grams problem! Now you can fill in an amount of grams. The base value is set at 100. It is now time to add the scatterplot with the calories on the y axis and the nutrient on the x axis. I plan to work from inside out again.
+
