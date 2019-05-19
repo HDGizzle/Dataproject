@@ -186,3 +186,21 @@ var WebDrawer = function(input, g, cfg, total, tooltip) {
     series++;
   });
 }
+
+
+
+
+var DropdownObject = function(ddName, datas, nutrienttypes, maxes, data, grams) {
+var selected = d3.select(ddName).node().value;
+// loop through nutrition dict of each fruit
+if (selected != "Choose a fruit") {
+for (i = 0; i < nutrienttypes.length; i++) {
+  value = (datas[selected][nutrienttypes[i]] / 100) * grams;
+  console.log(grams);
+  name = nutrienttypes[i];
+  max = maxes[i]
+  var dict = {"nutrient": name, "value": value, "max": max}
+  data.push(dict);
+}
+}
+};
