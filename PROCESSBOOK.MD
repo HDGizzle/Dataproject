@@ -42,3 +42,5 @@ May 18th (day 20): I fixed the double web problem, and now it displays either on
 
 May 19th (day 21): I fixed the grams problem! Now you can fill in an amount of grams. The base value is set at 100. It is now time to add the scatterplot with the calories on the y axis and the nutrient on the x axis. I plan to work from inside out again.
 
+May 22nd (day 22, working at night): Today I did some easy, no-brain stuff (because it was a long day). I added text to my website and made it look nice by adding an intro and changing banner images. 
+
