@@ -184,7 +184,7 @@
 <!-- </div> -->
 
 <!-- 0101 banner met assignment titel -->
-<div class="bgimg-2 w3-display-container w3-opacity-min">
+<div class="bgimg-3 w3-display-container w3-opacity-min">
   <div class="w3-display-middle">
     <span class="w3-center w3-padding-large w3-black w3-xlarge w3-wide w3-animate-opacity">PROGRAMMEERPROJECT 2019</span>
   </div>
@@ -257,13 +257,19 @@
 
             console.log(sortArrayOfObjects(figuredata, "nutrient"));
 
+            d3.json("nutrientinfo.json").then(function (info) {
+              info = info[selected];
+              console.log(info);
 
 // call barchart function
-          BarChart.draw(figuredata, selected);
+          BarChart.draw(figuredata, selected, info);
+        })
         })
       })
 
       });
+
+
   </script>
 </div>
 

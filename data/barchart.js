@@ -1,5 +1,7 @@
 var BarChart = {
-  draw: function(figuredata, nutrientname) {
+  draw: function(figuredata, nutrientname, nutrientinfo) {
+
+    console.log(nutrientinfo);
 // define svg parameters
   var svg = d3.select("#histosvg"),
     margin = {top: 20, right: 20, bottom: 60, left: 80},
@@ -10,6 +12,7 @@ var BarChart = {
     .range(["#6F257F", "#CA0D59"]);
 // define tooltip
   var tooltip = d3.select("body").append("div").attr("class", "tooltip");
+  var tooltip2 = d3.select("body").append("div").attr("class", "tooltip2");
 // scale x and y axis
   var x = d3.scaleBand().rangeRound([0, width]).padding(0.1),
       y = d3.scaleLinear().rangeRound([height, 0]);
@@ -37,8 +40,8 @@ var BarChart = {
     .call(d3.axisLeft(y).ticks(5).tickFormat(function(d) { return d; }).tickSizeInner([-width]))
     .append("text")
     .attr("transform", "rotate(-90)")
-    .attr("y", -35)
-    .attr("dy", "0.71em")
+    .attr("y", -38)
+    .attr("dy", "0.1em")
     .attr("text-anchor", "end")
     .attr("fill", "#5D6971")
     .text(nutrientname);
@@ -65,5 +68,30 @@ var BarChart = {
             return x(d.Fruit)})
         .attr("width", x.bandwidth());
         tooltip.transition().duration(500).style('opacity', 0)});
-   }
+
+  g.append("g")
+    .attr("class", "Qmark")
+    .append("text")
+    .attr("x", 26)
+    .attr("y", 19)
+    .attr("text-anchor", "end")
+    .attr("fill", "black")
+    .text("?");
+
+  g.append("rect")
+    .attr("x", 10)
+    .attr("y", 0)
+    .attr("width", 25)
+    .attr("height", 25)
+    .style("fill", "#800000")
+    .style("fill-opacity", .6)
+    .on('mouseover', function (d){
+      tooltip2.style("left", d3.event.pageX - 40 + "px")
+        .style("top", d3.event.pageY - 80 + "px")
+        .style("display", "inline-block")
+        .html(nutrientinfo[0] + "<br><br>" + "<em>Too much?</em>" + "<br>" + nutrientinfo[1] + "<br><br>" + "<em>Too little?</em>" + "<br>" + nutrientinfo[2])
+    })
+      .on("mouseout", function(d){ tooltip2.style("display", "none");});
+
+}
 };
