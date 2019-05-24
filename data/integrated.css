@@ -11,6 +11,8 @@ body, html {
   fill: grey;
 }
 
+
+
 /* Create a Parallax Effect */
 .bgimg-1, .bgimg-2 {
     background-attachment: fixed;
@@ -119,4 +121,25 @@ margin-left: -12px;
 .toolTip span {
 font-weight: 500;
 color: #081F2C;
+}
+
+#radar-dropdown {
+  height: 35px;
+  background-color: #800000;
+  opacity: 0.8;
+}
+
+#radar-dropdown2 {
+  height: 35px;
+  background-color: #ffa500;
+  opacity: 0.8;
+}
+
+#Grams {
+  height: 35px;
+  width: 75px;
+}
+
+#comparebutton {
+  height: 36px;
 }

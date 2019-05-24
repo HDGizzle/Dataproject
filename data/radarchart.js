@@ -49,7 +49,7 @@ var RadarChart = {
      .text((j+1)*100/cfg.levels);
   }
 
-  series = 0;
+
 // initiate axis variable
   var axis = g.selectAll(".axis")
       .data(allAxis)
@@ -78,18 +78,30 @@ var RadarChart = {
     .attr("y", function(d, i){return cfg.h/2*(1-Math.cos(i*cfg.radians/total))-20*Math.cos(i*cfg.radians/total);});
 // draw and color data area - change opacity when hovered over
 
-  if (typeof d !== undefined){
-    WebDrawer(d, g, cfg, total, tooltip);
+  dataValues = [];
+  dataValues2 = [];
+  series = 0;
+  if (typeof d !== "undefined"){
+    WebDrawer(d, g, cfg, total, tooltip, dataValues);
   };
-  if (typeof d2 !== undefined){
-    WebDrawer(d2, g, cfg, total, tooltip);
+  series = 1;
+  if (typeof d2 !== "undefined"){
+    WebDrawer(d2, g, cfg, total, tooltip, dataValues2);
+  };
+  series = 0;
+  if (typeof d !== "undefined"){
+    TooltipDrawer(d, g, cfg, total, tooltip, dataValues);
+  };
+  series = 1;
+  if (typeof d2 !== "undefined"){
+    TooltipDrawer(d2, g, cfg, total, tooltip, dataValues2);
   };
   }
 };
 
-var WebDrawer = function(input, g, cfg, total, tooltip) {
+var WebDrawer = function(input, g, cfg, total, tooltip, dataValues) {
   input.forEach(function(y, x){
-    dataValues = [];
+    // dataValues = [];
     g.selectAll(".nodes")
     .data(y, function(j, i){
       if (j.value > j.max){
@@ -139,7 +151,9 @@ var WebDrawer = function(input, g, cfg, total, tooltip) {
     series++;
   });
   series=0;
+}
 
+var TooltipDrawer = function(input, g, cfg, total, tooltip, dataValues) {
 // add data dots on spokes with tooltip
   input.forEach(function(y, x){
     g.selectAll(".nodes")
