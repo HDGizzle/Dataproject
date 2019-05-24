@@ -44,3 +44,5 @@ May 19th (day 21): I fixed the grams problem! Now you can fill in an amount of g
 
 May 22nd (day 22, working at night): Today I did some easy, no-brain stuff (because it was a long day). I added text to my website and made it look nice by adding an intro and changing banner images. 
 
+May 24th (day 23): Today I added a "legend" to my radar chart by coloring the drop downs in the same fashion as the "webs" of the radar chart. Furthermore I ensured that all dots of the of the webs have a tooltip on hover, by first drawing the webs and then the dots. I then added a "info button" in the top left of the the nutrient comparison bar chart. I still have to adjust all the text before I will definitively add it to the data, but you can see a preview when you select carbohydrates. Furthermore I added some background color and adjusted some images, and aligned the radar chart better. Quite a productive day! 
+
