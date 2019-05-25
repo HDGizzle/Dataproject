@@ -1,6 +1,7 @@
 import csv
 import json
 import pandas as pd
+from os import walk
 
 colors = {
 # red
@@ -37,17 +38,21 @@ nutrientinfo = {
 "Vitamin C, total ascorbic acid in milligram": "Vit C"
 }
 
+csv_dataset = []
+for (dirpath, dirnames, filenames) in walk("raw_data"):
+    csv_dataset.extend(filenames)
+    break
 
 # call initial file
-csv_data = "Apple.csv"
+csv_data = csv_dataset[0]
 
 # name of the current fruit
 fruitname = csv_data[0:-4]
 
 print(fruitname)
-
+print(csv_dataset)
 # open fruit csv file
-csvfile = open(csv_data, "r")
+csvfile = open(f"raw_data/{csv_data}", "r")
 
 # create dataframe of fruit csv
 df = pd.read_csv(csvfile, skiprows=4)
@@ -77,13 +82,11 @@ df = df.rename(columns = {"1Value per 100 g": fruitname})
 
 
 
-csv_dataset = ["Apricot.csv", "Banana.csv", "Blackberry.csv", "Blueberry.csv", "Blue Grapes.csv",
-"Cherry.csv", "Cranberry.csv", "Grapefruit.csv", "Green Grapes.csv", "KiwiGold.csv", "KiwiGreen.csv", "Lychee.csv", "Mango.csv",
-"MelonCantaloupe.csv", "MelonHoneydew.csv", "Nectarine.csv", "Orange.csv", "Passionfruit.csv", "Peach.csv",
-"Pear.csv", "Plum.csv", "Pomegranate.csv", "Raspberry.csv", "Strawberry.csv", "Tangerine.csv", "Watermelon.csv"]
+csv_dataset = csv_dataset[1: -1]
+
 
 for fruit in csv_dataset:
-    data = open(fruit, "r")
+    data = open(f"raw_data/{fruit}", "r")
 
     fruittext = fruit[0:-4]
 
@@ -137,7 +140,7 @@ jsonfile = json.loads(df.to_json(orient="index"))
 
 
 
-# print(jsonfile)
+print(jsonfile)
 
 with open('nutrients.json', 'w') as outfile:
     json.dump(jsonfile, outfile)

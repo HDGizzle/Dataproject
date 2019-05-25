@@ -14,9 +14,9 @@
 
 
 <body>
-<script src="barchart.js"></script>
-<script src="radarchart.js"></script>
-<script src="scatterplot.js"></script>
+<script src="scripts/barchart.js"></script>
+<script src="scripts/radarchart.js"></script>
+<script src="scripts/scatterplot.js"></script>
 
 
 <!-- Navbar (sit on top) -->
@@ -104,7 +104,7 @@
      }
 
      // load data
-     d3.json("nutrients.json").then(function (datas) {
+     d3.json("data/nutrients.json").then(function (datas) {
      // extract fruit name strings
        fruitnames = Object.keys(datas)
      // extract nutrient name strings
@@ -232,14 +232,14 @@
         var selected = d3.select("#barchart-dropdown").node().value;
         console.log(selected);
 // load json file
-        d3.json("nutrients.json").then(function (data) {
+        d3.json("data/nutrients.json").then(function (data) {
 // extract fruit names
           var fruitnames = Object.keys(data);
 // initialize reformatted data list
           var figuredata = []
 
           console.log(figuredata);
-        d3.json("fruitcolors.json").then(function (colors) {
+        d3.json("data/fruitcolors.json").then(function (colors) {
           console.log(colors);
 
 // Reformat data to list of dicts with universal keys
@@ -262,7 +262,7 @@
 
             console.log(sortArrayOfObjects(figuredata, "nutrient"));
 
-            d3.json("nutrientinfo.json").then(function (info) {
+            d3.json("data/nutrientinfo.json").then(function (info) {
               info = info[selected];
               console.log(info);
 
@@ -321,14 +321,14 @@
             var selected = d3.select("#scatter-dropdown").node().value;
             console.log(selected);
     // load json file
-            d3.json("nutrients.json").then(function (data) {
+            d3.json("data/nutrients.json").then(function (data) {
     // extract fruit names
               var fruitnames = Object.keys(data);
     // initialize reformatted data list
               var figuredata = []
 
               console.log(figuredata);
-            d3.json("fruitcolors.json").then(function (colors) {
+            d3.json("data/fruitcolors.json").then(function (colors) {
               console.log(colors);
 
     // Reformat data to list of dicts with universal keys
