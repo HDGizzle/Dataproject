@@ -46,3 +46,5 @@ May 22nd (day 22, working at night): Today I did some easy, no-brain stuff (beca
 
 May 24th (day 23): Today I added a "legend" to my radar chart by coloring the drop downs in the same fashion as the "webs" of the radar chart. Furthermore I ensured that all dots of the of the webs have a tooltip on hover, by first drawing the webs and then the dots. I then added a "info button" in the top left of the the nutrient comparison bar chart. I still have to adjust all the text before I will definitively add it to the data, but you can see a preview when you select carbohydrates. Furthermore I added some background color and adjusted some images, and aligned the radar chart better. Quite a productive day! 
 
+May 25th (day 24): Today I structured my files into correct folders, in a hopefully desirable structure in the eyes of the tutors. I also added some outline to the bars and the dots so I can maintain the white fruitflesh color. Furthermore I added some cosmetic changes to make the whole thing look nicer. 
+
