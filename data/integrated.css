@@ -35,8 +35,8 @@ body, html {
 }
 
 .bgimg-3 {
-    background-image: url('molecules.png');
-    min-height: 100%;
+    background-image: url('moleculenbanner.jpg');
+    /* min-height: 400px; */
 }
 
 .w3-wide {letter-spacing: 6px;}
@@ -142,6 +142,11 @@ font-weight: 500;
 color: #081F2C;
 }
 
+.radarvariables {
+  margin: auto;
+  width: 55%;
+}
+
 #radar-dropdown {
   height: 35px;
   background-color: #800000;
@@ -162,6 +167,9 @@ color: #081F2C;
 #comparebutton {
   height: 36px;
 }
+
+
+
 
 .Qmark {
   font-size: 20px;

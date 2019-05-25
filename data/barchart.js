@@ -54,7 +54,9 @@ var BarChart = {
       .attr("width", x.bandwidth())
       .attr("height", function(d) { return height - y(d.nutrient); })
       .attr("fill", function(d) { return d.color; })
-      .style("fill-opacity", .7)
+      .style("fill-opacity", .8)
+      .style("stroke-width", "1px")
+      .style("stroke", "#000000")
       .on("mouseover", function(d, i) {
         var xPos = +d3.select(this).attr("x")
         var wid = +d3.select(this).attr("width");

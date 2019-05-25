@@ -2,11 +2,13 @@ var Scatterplot = {
   draw: function(data, xtext, cfg) {
 // define data for x and y axis
 var x = function(d) { return d.nutrient; }
-var y = function(d) { return d.carbs; }
+var y = function(d) { return d.kcal; }
 
 // scale data for x and y axis
-var xScaler = function(d) { return xScale(d.nutrient);}
-var yScaler = function(d) {  return yScale(d.carbs);}
+var xScaler = function(d) { return xScale(d.nutrient); }
+
+var yScaler = function(d) { return yScale(d.kcal); }
+
 
 // define colors for scatterplot categories
 var colorcategory = function (d) { return d.color;}
@@ -18,7 +20,7 @@ var ytext = "Kcal per 100 grams"
 var tooltipdata = (d) => {
   tooltip.transition().duration(200).style('opacity', 0.9);
   // replace text with desired tooltip text
-  tooltip.html(`<span>${d.Fruit}</span> <br> Carbohydrates (gr):  <span>${d.carbs}</span> <br>  <span>${xtext}</span>:  <span>${d.nutrient}</span>`)
+  tooltip.html(`<span>${d.Fruit}</span> <br> Calories:  <span>${d.kcal}</span> <br>  <span>${xtext}</span>:  <span>${d.nutrient}</span>`)
   .style('left', `${d3.event.layerX}px`)
   .style('top', `${(d3.event.layerY - 28)}px`);
 }
@@ -34,7 +36,7 @@ var tooltipdata = (d) => {
      .range([cfg.h - cfg.margin, cfg.margin]);
 
    // axis scaling
-   var xAxis = d3.axisBottom().scale(xScale).tickFormat(d3.format("d"));
+   var xAxis = d3.axisBottom().scale(xScale);
    var yAxis = d3.axisLeft().scale(yScale);
 
    // define scatterplot tooltip
@@ -55,6 +57,8 @@ var tooltipdata = (d) => {
      .attr("cy", yScaler)
      .attr("r", 5)
      .attr("fill", (colorcategory))
+     .style("stroke-width", "2px")
+     .style("stroke", "#000000")
      .on('mouseover', tooltipdata)
      .on('mouseout', () => tooltip.transition().duration(500).style('opacity', 0))
 
@@ -67,6 +71,7 @@ var tooltipdata = (d) => {
      .attr('text-anchor', 'end')
      .attr('class', 'label')
      .text(xtext);
+
 
 
    // draw x axis

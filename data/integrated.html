@@ -74,27 +74,30 @@
    </em></p>
    <plot align="center"></plot>
 
-
+<div class="radarvariables">
    <select id="radar-dropdown" align=center>
        <option>Choose a fruit</option>
    </select>
-
 
    <select id="radar-dropdown2" align="center">
        <option>Choose a fruit</option>
    </select>
 
-   <input type="number" value=100 id="Grams" align="center">
+   <label for="Grams" id=gramblabel>Grams:</label>
 
-   <button type="button" id="comparebutton" align="center">Compare!</button>
+   <input type="number" value=100 min=0 id="Grams" align="center">
+
+   <button type="button" id="comparebutton" align="right">Compare!</button>
+</div>
+
 
    <div id="radar-svg" align="center"></div>
    <script>
-     var width = 1000
-     var height = 600
+     // var width = 1000
+     // var height = 600
 
      // bar chart variables
-     var radarconfig = {radius: 5, w: 500, h: 500, factor: 1, factorLegend: .85,
+     var radarconfig = {radius: 5, w: 550, h: 550, factor: 1, factorLegend: .85,
       levels: 10, radians: 2 * Math.PI, opacityArea: 0.5, ToRight: 5,
       TranslateX: 80, TranslateY: 30, ExtraWidthX: 170, ExtraWidthY: 100,
       color: d3.scaleOrdinal().range(["#800000", "#ffa500"])
@@ -242,11 +245,13 @@
 // Reformat data to list of dicts with universal keys
           for (i = 0; i < fruitnames.length; i++) {
             var nutrient = data[fruitnames[i]][selected];
+            if (nutrient != null) {
             color = colors[fruitnames[i]]["color"]
-
             var dict = {"Fruit": fruitnames[i], "nutrient": nutrient, "color": color}
             figuredata.push(dict);
+            }
             };
+
             console.log(figuredata);
 
             sortArrayOfObjects = (arr, key) => {
@@ -329,10 +334,11 @@
     // Reformat data to list of dicts with universal keys
               for (i = 0; i < fruitnames.length; i++) {
                 var nutrient = data[fruitnames[i]][selected];
-                color = colors[fruitnames[i]]["color"]
-
-                var dict = {"Fruit": fruitnames[i], "nutrient": nutrient, "color": color, "carbs": data[fruitnames[i]]["Energy in kcal"]}
-                figuredata.push(dict);
+                if (nutrient != null) {
+                  color = colors[fruitnames[i]]["color"]
+                  var dict = {"Fruit": fruitnames[i], "nutrient": nutrient, "color": color, "kcal": data[fruitnames[i]]["Energy in kcal"]}
+                  figuredata.push(dict);
+                }
                 };
                 console.log(figuredata);
 
