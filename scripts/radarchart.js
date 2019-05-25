@@ -49,7 +49,6 @@ var RadarChart = {
      .text((j+1)*100/cfg.levels);
   }
 
-
 // initiate axis variable
   var axis = g.selectAll(".axis")
       .data(allAxis)
