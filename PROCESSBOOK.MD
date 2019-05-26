@@ -48,3 +48,4 @@ May 24th (day 23): Today I added a "legend" to my radar chart by coloring the dr
 
 May 25th (day 24): Today I structured my files into correct folders, in a hopefully desirable structure in the eyes of the tutors. I also added some outline to the bars and the dots so I can maintain the white fruitflesh color. Furthermore I added some cosmetic changes to make the whole thing look nicer. 
 
+May 26th (day 25): Today I spent all day getting my additional nutrient information in place. It was more work than expected, 2800 words. 
