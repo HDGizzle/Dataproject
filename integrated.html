@@ -11,351 +11,177 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" type="text/css" href="integrated.css">
 <script src="//d3js.org/d3.v5.min.js"></script>
-
-
-<body>
 <script src="scripts/barchart.js"></script>
 <script src="scripts/radarchart.js"></script>
 <script src="scripts/scatterplot.js"></script>
+<script src="scripts/dataloaders.js"></script>
 
-
+<body>
 <!-- Navbar (sit on top) -->
-<div class="w3-top">
-  <div class="w3-bar" id="myNavbar">
-    <a class="w3-bar-item w3-button w3-hover-black w3-hide-medium w3-hide-large w3-right" href="javascript:void(0);" onclick="toggleFunction()" title="Toggle Navigation Menu">
-      <i class="fa fa-bars"></i>
-    </a>
-    <a href="#home" class="w3-bar-item w3-button">HOME</a>
-    <a href="#HEAD-TO-HEAD FRUIT COMPARISON" class="w3-bar-item w3-button w3-hide-small"><i class="fa fa-th"></i> HEAD-TO-HEAD FRUIT COMPARISON</a>
-    <a href="#NUTRIENT COMPARISON" class="w3-bar-item w3-button w3-hide-small"><i class="fa fa-th"></i> NUTRIENT COMPARISON</a>
-    <a href="#CALORIE TO NUTRIENT COMPARISON" class="w3-bar-item w3-button w3-hide-small"><i class="fa fa-th"></i> CALORIE TO NUTRIENT COMPARISON</a>
+  <div class="w3-top">
+    <div class="w3-bar" id="myNavbar">
+      <a class="w3-bar-item w3-button w3-hover-black w3-hide-medium w3-hide-large w3-right" href="javascript:void(0);" onclick="toggleFunction()" title="Toggle Navigation Menu">
+        <i class="fa fa-bars"></i>
+      </a>
+      <a href="#home" class="w3-bar-item w3-button">HOME</a>
+      <a href="#HEAD-TO-HEAD FRUIT COMPARISON" class="w3-bar-item w3-button w3-hide-small"><i class="fa fa-th"></i> HEAD-TO-HEAD FRUIT COMPARISON</a>
+      <a href="#NUTRIENT COMPARISON" class="w3-bar-item w3-button w3-hide-small"><i class="fa fa-th"></i> NUTRIENT COMPARISON</a>
+      <a href="#CALORIE TO NUTRIENT COMPARISON" class="w3-bar-item w3-button w3-hide-small"><i class="fa fa-th"></i> CALORIE TO NUTRIENT COMPARISON</a>
+    </div>
+    <!-- Navbar on small screens -->
+    <div id="navDemo" class="w3-bar-block w3-white w3-hide w3-hide-large w3-hide-medium">
+      <a href="#ASSIGNMENT" class="w3-bar-item w3-button" onclick="toggleFunction()">ASSIGNMENT</a>
+    </div>
   </div>
 
-  <!-- Navbar on small screens -->
-  <div id="navDemo" class="w3-bar-block w3-white w3-hide w3-hide-large w3-hide-medium">
-    <a href="#ASSIGNMENT" class="w3-bar-item w3-button" onclick="toggleFunction()">ASSIGNMENT</a>
+  <!-- page top banner -->
+  <div class="bgimg-1 w3-display-container w3-opacity-min" id="home">
+    <div class="w3-display-middle" style="white-space:nowrap;">
+      <span class="w3-center w3-padding-large w3-black w3-xlarge w3-wide w3-animate-opacity"> <span class="w3-hide-small">PROGRAMMEERPROJECT</span> 2019</span>
+    </div>
   </div>
-</div>
 
-<!-- banner met strandfoto en data processing titel -->
-<div class="bgimg-1 w3-display-container w3-opacity-min" id="home">
-  <div class="w3-display-middle" style="white-space:nowrap;">
-    <span class="w3-center w3-padding-large w3-black w3-xlarge w3-wide w3-animate-opacity"> <span class="w3-hide-small">PROGRAMMEERPROJECT</span> 2019</span>
-  </div>
-</div>
-
-
-<div class="w3-content w3-container w3-padding-64" id="about">
-  <h3 class="w3-center">THE FRUIT COMPARISON</h3>
-  <p class="w3-center"><em>"That fruit is seriously the best! I know because I read it on Facebook..."</em></p>
-  <p class="w3-center">Today's world is increasingly revolving around the healthy lifestyle social media and society is advertising for.
-     However many false or unfair claims are made about the contents of certain fruits or
-     vegetables. Superfruits do not exist, and if they do, they are not the fruits that people
-     currently consider to be superfood. But what if there was a website on which you could
-     see all the fruits and their nutritional values?</p>
+  <!-- first container, contains intro to the project in text -->
+  <div class="w3-content w3-container w3-padding-64" id="about">
+    <h3 class="w3-center">THE FRUIT COMPARISON</h3>
+    <p class="w3-center"><em>"That fruit is seriously the best! I know because I read it on Facebook..."</em></p>
+    <p class="w3-center">Today's world is increasingly revolving around the healthy lifestyle social media and society is advertising for.
+       However many false or unfair claims are made about the contents of certain fruits or
+       vegetables. Superfruits do not exist, and if they do, they are not the fruits that people
+       currently consider to be superfood. But what if there was a website on which you could
+       see all the fruits and their nutritional values?</p>
     <p class="w3-center">For this very reason, I proudly present the fruit comparison. On this page you can compare fruits
-    and their relevant nutrients which can help you maintain a healthy diet. Because the data is visualized, it is easier to interpret the numbers presented by the fruits themselves.
-    In such a way, you can show your Mr./Mrs. know it all fit friends the truth about the claims they might make about fruits. The buttons on top of your screen will allow you to quickly jump to your relevant figure. Enjoy!</p>
-</div>
-
-<div class="bgimg-2 w3-display-container w3-opacity-min">
-  <div class="w3-display-middle">
-    <span class="w3-center w3-padding-large w3-black w3-xlarge w3-wide w3-animate-opacity">PROGRAMMEERPROJECT 2019</span>
+      and their relevant nutrients which can help you maintain a healthy diet. Because the data is visualized, it is easier to interpret the numbers presented by the fruits themselves.
+      In such a way, you can show your Mr./Mrs. know it all fit friends the truth about the claims they might make about fruits. The buttons on top of your screen will allow you to quickly jump to your relevant figure. Enjoy!</p>
   </div>
-</div>
 
-
- <div class="w3-content w3-container w3-padding-64" id="HEAD-TO-HEAD FRUIT COMPARISON">
-   <h3 class="w3-center">Head-to-head fruit comparison</h3>
-   <p class="w3-center"><em>Here you can compare fruit head-to-head, where the radar chart indicates what percentage of your recommended daily allowance of each relevant nutrient is met.
-     You can either select one fruit, or compare two fruits head to head to see which fruit is better than the other in terms of each relevant nutrient. The standard value is set at 100 grams, but as you can see for yourself
-     100 grams of any kind of fruit hardly contains any nutrients besides vitamin C. By changing the amount of grams the figures become more interesting, but try for yourself!
-     You can also hover over the dots to see the actual content of each nutrient.
-   </em></p>
-   <plot align="center"></plot>
-
-<div class="radarvariables">
-   <select id="radar-dropdown" align=center>
-       <option>Choose a fruit</option>
-   </select>
-
-   <select id="radar-dropdown2" align="center">
-       <option>Choose a fruit</option>
-   </select>
-
-   <label for="Grams" id=gramblabel>Grams:</label>
-
-   <input type="number" value=100 min=0 id="Grams" align="center">
-
-   <button type="button" id="comparebutton" align="right">Compare!</button>
-</div>
-
-
-   <div id="radar-svg" align="center"></div>
-   <script>
-     // var width = 1000
-     // var height = 600
-
-     // bar chart variables
-     var radarconfig = {radius: 5, w: 550, h: 550, factor: 1, factorLegend: .85,
-      levels: 10, radians: 2 * Math.PI, opacityArea: 0.5, ToRight: 5,
-      TranslateX: 80, TranslateY: 80, ExtraWidthX: 170, ExtraWidthY: 120,
-      color: d3.scaleOrdinal().range(["#800000", "#ffa500"])
-     }
-
-     // load data
-     d3.json("data/nutrients.json").then(function (datas) {
-     // extract fruit name strings
-       fruitnames = Object.keys(datas)
-     // extract nutrient name strings
-       nutrienttypes = Object.keys(datas[fruitnames[0]])
-       nutrienttypes.splice(0, 9)
-       nutrienttypes.splice(5, 1)
-       nutrienttypes.splice(9, 1)
-       nutrienttypes.splice(11, 1)
-       nutrienttypes.splice(12, 1)
-       nutrienttypes.splice(10, 1)
-       nutrienttypes.splice(6, 1)
-       nutrienttypes.splice(7, 1)
-       nutrienttypes.splice(11, 2)
-       nutrienttypes.splice(2, 1)
-       console.log(nutrienttypes);
-     //
-       var select = document.getElementById("radar-dropdown");
-       var select2 = document.getElementById("radar-dropdown2");
-
-       for(var i = 0; i < fruitnames.length; i++) {
-           var opt = fruitnames[i];
-           var el = document.createElement("option");
-           var el2 = document.createElement("option");
-           el.textContent = opt;
-           el.value = opt;
-           el2.textContent = opt;
-           el2.value = opt;
-           select2.appendChild(el2);
-           select.appendChild(el);
-
-       }
-     // recommended daily maxes of relevant nutrients
-       maxes = [30, 300, 325, 15, 3000, 1.3, 1, 800, 1.3, 80]
-       factor = 4
-
-     d3.select("#radar-dropdown").on("change",function(d){
-      var grams = d3.select("#Grams").node().value;
-      data = []
-      DropdownObject("#radar-dropdown", datas, nutrienttypes, maxes, data, grams);
-      dataz = []
-      dataz.push(data);
-    });
-
-     d3.select("#radar-dropdown2").on("change",function(d){
-        var grams = d3.select("#Grams").node().value;
-        data2 = []
-        DropdownObject("#radar-dropdown2", datas, nutrienttypes, maxes, data2, grams);
-        dataz2 = []
-        dataz2.push(data2);
-     });
-
-     d3.select("#Grams").on("change",function(d){
-       var grams = d3.select("#Grams").node().value;
-       data = []
-       DropdownObject("#radar-dropdown", datas, nutrienttypes, maxes, data, grams);
-       dataz = []
-       dataz.push(data);
-       data2 = []
-       DropdownObject("#radar-dropdown2", datas, nutrienttypes, maxes, data2, grams);
-       dataz2 = []
-       dataz2.push(data2);
-     })
-
-     d3.select("#comparebutton").on("click",function(d){
-       if (typeof dataz === "undefined") {
-          RadarChart.draw("#radar-svg", dataz2, radarconfig);
-       }
-       if (typeof dataz2 === "undefined") {
-          RadarChart.draw("#radar-svg", dataz, radarconfig)
-       }
-       if (typeof dataz2 !== "undefined" && dataz !== "undefined") {
-         RadarChart.draw("#radar-svg", dataz, radarconfig, dataz2);
-       }
-     });
-
-     })
-   </script>
- </div>
-
-<!-- </div> -->
-
-<!-- 0101 banner met assignment titel -->
-<div class="bgimg-3 w3-display-container w3-opacity-min">
-  <div class="w3-display-middle">
-    <span class="w3-center w3-padding-large w3-black w3-xlarge w3-wide w3-animate-opacity">PROGRAMMEERPROJECT 2019</span>
+  <!-- banner text -->
+  <div class="bgimg-2 w3-display-container w3-opacity-min">
+    <div class="w3-display-middle">
+      <span class="w3-center w3-padding-large w3-black w3-xlarge w3-wide w3-animate-opacity">PROGRAMMEERPROJECT 2019</span>
+    </div>
   </div>
-</div>
 
-<!-- Assignment intro en data -->
-<div class="w3-content w3-container w3-padding-64" id="NUTRIENT COMPARISON">
-  <h3 class="w3-center">The Nutrient Comparison</h3>
-  <p class="w3-center"><em>In this section you can compare fruits per nutrient to see how much of a certain nutrient they contain per 100 grams. The bars are sorted so that
-    it is easier to compare the different fruits with one another. Pick any kind of nutrient with the drop down menu, and the figure will redraw itself for the according nutrient.
-    The colors of the bars represent the colors of the flesh of the different fruits. The idea here was to see if any connections between color and nutrients would reveal itself when drawing the
-    figures. Unfortunately it did not, however this is also a result! Which is why i decided to keep the different colors in there.
-  </em></p>
-  <plot align="center"></plot>
-  <select id="barchart-dropdown">
-    <option value="Carbohydrate, by difference in gram">Carbohydrates (gram)</option>
-    <option value="Energy in kcal">Energy (kcal)</option>
-    <option value="Fiber, total dietary in gram">Fiber (gram)</option>
-    <option value="Folate, DFE in microgram">Folate/B11 (microgram)</option>
-    <option value="Iron, Fe in milligram">Iron (milligram)</option>
-    <option value="Magnesium, Mg in milligram">Magnesium (milligram)</option>
-    <option value="Niacin in milligram">Niacin/B3 (milligram)</option>
-    <option value="Phosphorus, P in milligram">Phosphorus (milligram)</option>
-    <option value="Potassium, K in milligram">Potassium (milligram)</option>
-    <option value="Riboflavin in milligram">Riboflavin/B2 (milligram)</option>
-    <option value="Sugars, total in gram">Sugars (gram)</option>
-    <option value="Thiamin in milligram">Thiamin/B1 (milligram)</option>
-    <option value="Vitamin A, RAE in microgram">Vitamin A (microgram)</option>
-    <option value="Vitamin B-6 in milligram">Vitamin B-6 (milligram)</option>
-    <option value="Vitamin C, total ascorbic acid in milligram">Vitamin C (milligram)</option>
-  </select>
+  <!-- first container with radar chart in it  -->
+  <div class="w3-content w3-container w3-padding-64" id="HEAD-TO-HEAD FRUIT COMPARISON">
+     <h3 class="w3-center">Head-to-head fruit comparison</h3>
+     <p class="w3-center"><em>Here you can compare fruit head-to-head, where the radar chart indicates what percentage of your recommended daily allowance of each relevant nutrient is met.
+       You can either select one fruit, or compare two fruits head to head to see which fruit is better than the other in terms of each relevant nutrient. The standard value is set at 100 grams, but as you can see for yourself
+       100 grams of any kind of fruit hardly contains any nutrients besides vitamin C. By changing the amount of grams the figures become more interesting, but try for yourself!
+       You can also hover over the dots to see the actual content of each nutrient.
+     </em></p>
+     <plot align="center"></plot>
+     <div class="radarvariables" align=center>
+       <select id="radar-dropdown" align=center>
+         <option>Choose a fruit</option>
+       </select>
 
-  <svg id="histosvg" width="1000" height="500"></svg>
-
-  <script>
-// function to change bar chart when new nutrient is chosen in dropdown
-    d3.select("#barchart-dropdown")
-      .on("change",function(d){
-// clear previously drawn svg
-        d3.selectAll("#histosvg > *").remove();
-// get string of nutrient names
-        var selected = d3.select("#barchart-dropdown").node().value;
-        console.log(selected);
-// load json file
-        d3.json("data/nutrients.json").then(function (data) {
-// extract fruit names
-          var fruitnames = Object.keys(data);
-// initialize reformatted data list
-          var figuredata = []
-
-          console.log(figuredata);
-        d3.json("data/fruitcolors.json").then(function (colors) {
-          console.log(colors);
-
-// Reformat data to list of dicts with universal keys
-          for (i = 0; i < fruitnames.length; i++) {
-            var nutrient = data[fruitnames[i]][selected];
-            if (nutrient != null) {
-            color = colors[fruitnames[i]]["color"]
-            var dict = {"Fruit": fruitnames[i], "nutrient": nutrient, "color": color}
-            figuredata.push(dict);
-            }
-            };
-
-            console.log(figuredata);
-
-            sortArrayOfObjects = (arr, key) => {
-                return arr.sort((a, b) => {
-                    return a[key] - b[key];
-                });
-            };
-
-            console.log(sortArrayOfObjects(figuredata, "nutrient"));
-
-            d3.json("data/nutrientinfo.json").then(function (info) {
-              info = info[selected];
-              console.log(info);
-
-// call barchart function
-          BarChart.draw(figuredata, selected, info);
-        })
-        })
-      })
-
-      });
+       <select id="radar-dropdown2" align="center">
+           <option>Choose a fruit</option>
+       </select>
+       <label for="Grams" id=unitlabel>Grams:</label>
+       <input type="number" value=500 min=0 id="Grams" align="center">
+       <button type="button" id="comparebutton" align="right">Compare!</button>
+       <div id="gramsToKcal">
+         <label class="switch">
+           <input type="checkbox" id="Kcaltoggle">
+           <span class="slider round"></span>
+         </label>
+       </div>
+     </div>
 
 
-  </script>
-</div>
 
-<div class="bgimg-2 w3-display-container w3-opacity-min">
-  <div class="w3-display-middle">
-    <span class="w3-center w3-padding-large w3-black w3-xlarge w3-wide w3-animate-opacity">PROGRAMMEERPROJECT 2019</span>
+    <div id="radar-svg" align="center"></div>
+     <script>
+
+       RadarData();
+  
+
+     </script>
+   </div>
+
+  <!-- second banner with title -->
+  <div class="bgimg-3 w3-display-container w3-opacity-min">
+    <div class="w3-display-middle">
+      <span class="w3-center w3-padding-large w3-black w3-xlarge w3-wide w3-animate-opacity">PROGRAMMEERPROJECT 2019</span>
+    </div>
   </div>
-</div>
 
-<div class="w3-content w3-container w3-padding-64" id="CALORIE TO NUTRIENT COMPARISON">
-  <h3 class="w3-center">Head-to-head Nutrient comparison</h3>
-  <p class="w3-center"><em>In this section you can see if any nutrients present in fruit have some kind of relationship to the amount of calories present in the fruit. The y-axis of the
-    scatterplot has calories as a standard, whereas the x-axis changes upon changing the nutrient in the drop down menu. From what I have seen so far, only carbohydrates and sugar are related
-    to the amount of calories present in fruits, but see for yourself if you find anything revealing!
-  </em></p>
-  <plot align="center"></plot>
+  <!-- second container with barchart in it  -->
+  <div class="w3-content w3-container w3-padding-64" id="NUTRIENT COMPARISON">
+    <h3 class="w3-center">The Nutrient Comparison</h3>
+    <p class="w3-center"><em>In this section you can compare fruits per nutrient to see how much of a certain nutrient they contain per 100 grams. The bars are sorted so that
+      it is easier to compare the different fruits with one another. Pick any kind of nutrient with the drop down menu, and the figure will redraw itself for the according nutrient.
+      The colors of the bars represent the colors of the flesh of the different fruits. The idea here was to see if any connections between color and nutrients would reveal itself when drawing the
+      figures. Unfortunately it did not, however this is also a result! Which is why i decided to keep the different colors in there.
+    </em></p>
+    <plot align="center"></plot>
+    <select id="barchart-dropdown">
+      <option value="Carbohydrate, by difference in gram">Carbohydrates (gram)</option>
+      <option value="Energy in kcal">Energy (kcal)</option>
+      <option value="Fiber, total dietary in gram">Fiber (gram)</option>
+      <option value="Folate, DFE in microgram">Folate/B11 (microgram)</option>
+      <option value="Iron, Fe in milligram">Iron (milligram)</option>
+      <option value="Magnesium, Mg in milligram">Magnesium (milligram)</option>
+      <option value="Niacin in milligram">Niacin/B3 (milligram)</option>
+      <option value="Phosphorus, P in milligram">Phosphorus (milligram)</option>
+      <option value="Potassium, K in milligram">Potassium (milligram)</option>
+      <option value="Riboflavin in milligram">Riboflavin/B2 (milligram)</option>
+      <option value="Sugars, total in gram">Sugars (gram)</option>
+      <option value="Thiamin in milligram">Thiamin/B1 (milligram)</option>
+      <option value="Vitamin A, RAE in microgram">Vitamin A (microgram)</option>
+      <option value="Vitamin B-6 in milligram">Vitamin B-6 (milligram)</option>
+      <option value="Vitamin C, total ascorbic acid in milligram">Vitamin C (milligram)</option>
+    </select>
+    <svg id="histosvg" width="1000" height="500"></svg>
+    <script>
+      BarData();
+    </script>
+  </div>
 
-  <select id="scatter-dropdown">
-    <option value="Carbohydrate, by difference in gram">Carbohydrates (gram)</option>
-    <option value="Fiber, total dietary in gram">Fiber (gram)</option>
-    <option value="Folate, DFE in microgram">Folate/B11 (microgram)</option>
-    <option value="Iron, Fe in milligram">Iron (milligram)</option>
-    <option value="Magnesium, Mg in milligram">Magnesium (milligram)</option>
-    <option value="Niacin in milligram">Niacin/B3 (milligram)</option>
-    <option value="Phosphorus, P in milligram">Phosphorus (milligram)</option>
-    <option value="Potassium, K in milligram">Potassium (milligram)</option>
-    <option value="Riboflavin in milligram">Riboflavin/B2 (milligram)</option>
-    <option value="Sugars, total in gram">Sugars (gram)</option>
-    <option value="Thiamin in milligram">Thiamin/B1 (milligram)</option>
-    <option value="Vitamin A, RAE in microgram">Vitamin A (microgram)</option>
-    <option value="Vitamin B-6 in milligram">Vitamin B-6 (milligram)</option>
-    <option value="Vitamin C, total ascorbic acid in milligram">Vitamin C (milligram)</option>
-  </select>
-      <svg id="scattersvg" align="center"></svg>
+  <!-- third banner with title  -->
+  <div class="bgimg-2 w3-display-container w3-opacity-min">
+    <div class="w3-display-middle">
+      <span class="w3-center w3-padding-large w3-black w3-xlarge w3-wide w3-animate-opacity">PROGRAMMEERPROJECT 2019</span>
+    </div>
+  </div>
 
-      <script>
-        scatterconfig = {margin: 40, w: 1000, h: 500};
+  <!-- third container with scatterplot in it -->
+  <div class="w3-content w3-container w3-padding-64" id="CALORIE TO NUTRIENT COMPARISON">
+    <h3 class="w3-center">Head-to-head Nutrient comparison</h3>
+    <p class="w3-center"><em>In this section you can see if any nutrients present in fruit have some kind of relationship to the amount of calories present in the fruit. The y-axis of the
+      scatterplot has calories as a standard, whereas the x-axis changes upon changing the nutrient in the drop down menu. From what I have seen so far, only carbohydrates and sugar are related
+      to the amount of calories present in fruits, but see for yourself if you find anything revealing!
+    </em></p>
+    <plot align="center"></plot>
 
-    // function to change bar chart when new nutrient is chosen in dropdown
-        d3.select("#scatter-dropdown").on("change",function(d){
-    // clear previously drawn svg
-            d3.selectAll("#scattersvg > *").remove();
-    // get string of nutrient names
-            var selected = d3.select("#scatter-dropdown").node().value;
-            console.log(selected);
-    // load json file
-            d3.json("data/nutrients.json").then(function (data) {
-    // extract fruit names
-              var fruitnames = Object.keys(data);
-    // initialize reformatted data list
-              var figuredata = []
+    <select id="scatter-dropdown">
+      <option value="Carbohydrate, by difference in gram">Carbohydrates (gram)</option>
+      <option value="Fiber, total dietary in gram">Fiber (gram)</option>
+      <option value="Folate, DFE in microgram">Folate/B11 (microgram)</option>
+      <option value="Iron, Fe in milligram">Iron (milligram)</option>
+      <option value="Magnesium, Mg in milligram">Magnesium (milligram)</option>
+      <option value="Niacin in milligram">Niacin/B3 (milligram)</option>
+      <option value="Phosphorus, P in milligram">Phosphorus (milligram)</option>
+      <option value="Potassium, K in milligram">Potassium (milligram)</option>
+      <option value="Riboflavin in milligram">Riboflavin/B2 (milligram)</option>
+      <option value="Sugars, total in gram">Sugars (gram)</option>
+      <option value="Thiamin in milligram">Thiamin/B1 (milligram)</option>
+      <option value="Vitamin A, RAE in microgram">Vitamin A (microgram)</option>
+      <option value="Vitamin B-6 in milligram">Vitamin B-6 (milligram)</option>
+      <option value="Vitamin C, total ascorbic acid in milligram">Vitamin C (milligram)</option>
+    </select>
+    <svg id="scattersvg" align="center"></svg>
+    <script>
+      ScatterData();
+    </script>
+  </div>
 
-              console.log(figuredata);
-            d3.json("data/fruitcolors.json").then(function (colors) {
-              console.log(colors);
-
-    // Reformat data to list of dicts with universal keys
-              for (i = 0; i < fruitnames.length; i++) {
-                var nutrient = data[fruitnames[i]][selected];
-                if (nutrient != null) {
-                  color = colors[fruitnames[i]]["color"]
-                  var dict = {"Fruit": fruitnames[i], "nutrient": nutrient, "color": color, "kcal": data[fruitnames[i]]["Energy in kcal"]}
-                  figuredata.push(dict);
-                }
-                };
-                console.log(figuredata);
-
-              Scatterplot.draw(figuredata, selected, scatterconfig);
-            })
-          })
-
-          });
-      </script>
-</div>
-
-
-<!-- Footer -->
-<footer class="w3-center w3-black w3-padding-64 w3-opacity w3-hover-opacity-off">
-  <a href="#home" class="w3-button w3-light-grey"><i class="fa fa-arrow-up w3-margin-right"></i>To the top</a>
-  <p>Powered by <a href="https://www.w3schools.com/w3css/default.asp" title="W3.CSS" target="_blank" class="w3-hover-text-green">w3.css</a></p>
-</footer>
-
+  <!-- Footer -->
+  <footer class="w3-center w3-black w3-padding-64 w3-opacity w3-hover-opacity-off">
+    <a href="#home" class="w3-button w3-light-grey"><i class="fa fa-arrow-up w3-margin-right"></i>To the top</a>
+    <p>Powered by <a href="https://www.w3schools.com/w3css/default.asp" title="W3.CSS" target="_blank" class="w3-hover-text-green">w3.css</a></p>
+  </footer>
 </body>
 </html>

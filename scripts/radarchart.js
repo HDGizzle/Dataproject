@@ -195,18 +195,49 @@ var TooltipDrawer = function(input, g, cfg, total, tooltip, dataValues) {
         .style("display", "inline-block")
         .html((d.nutrient) + "<br><span>" + (d.value) + "</span>");
     })
-      .on("mouseout", function(d){ tooltip.style("display", "none");});
-    series++;
+    .on("mouseout", function(d){ tooltip.style("display", "none");})
+    .on("click", function(d){
+      var checkBox = document.getElementById("Kcaltoggle");
+      if (checkBox.checked == true) {
+      var element = document.getElementById("histosvg");
+      element.scrollIntoView({behavior: "smooth", block: "end", inline: "nearest"});
+      console.log("confirmed");
+      LinkedBarData(d.nutrient);
+    }
+    else{
+      var element = document.getElementById("scattersvg");
+      element.scrollIntoView({behavior: "smooth", block: "end", inline: "nearest"});
+      console.log("confirmed");
+      LinkedScatterData(d.nutrient);
+    }
+    });
+
+    series++
   });
 }
 
 
-var DropdownObject = function(ddName, datas, nutrienttypes, maxes, data, grams) {
+var DropdownObjectGrams = function(ddName, datas, nutrienttypes, maxes, data, grams) {
 var selected = d3.select(ddName).node().value;
 // loop through nutrition dict of each fruit
 if (selected != "Choose a fruit") {
 for (i = 0; i < nutrienttypes.length; i++) {
   value = (datas[selected][nutrienttypes[i]] / 100) * grams;
+  console.log(grams);
+  name = nutrienttypes[i];
+  max = maxes[i]
+  var dict = {"nutrient": name, "value": value, "max": max}
+  data.push(dict);
+}
+}
+};
+
+var DropdownObjectKcal = function(ddName, datas, nutrienttypes, maxes, data, grams) {
+var selected = d3.select(ddName).node().value;
+// loop through nutrition dict of each fruit
+if (selected != "Choose a fruit") {
+for (i = 0; i < nutrienttypes.length; i++) {
+  value = (datas[selected][nutrienttypes[i]] / datas[selected]["Energy in kcal"]) * grams;
   console.log(grams);
   name = nutrienttypes[i];
   max = maxes[i]
