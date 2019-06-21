@@ -2,6 +2,8 @@
 
 ### April 14th (day 1) 
 I started formatting the collected fruit CSV's. It had been a while since I programmed so I was a little rusty. However at the end of the day I got all the data into a dataframe and saved as a jsonfile. 
+
+
 <img src="images/jsonvoorbeeld.PNG" height="300">
 
 ### April 15th (day 2)
@@ -9,14 +11,20 @@ I make the decision to start working from inside out. By this I mean first getti
 
 ### April 19th (day 3)
 The bar chart is working, however I had to morph the json file a little within javascript in order to make it suitable for the chart. The bar chart has basic functionality, but still looks awful. However, all of this can be fixed quite easily (if I take my time), so I decide to now start working on the radar chart. Since the radar chart will be the biggest challenge due to it being circular, this is what I am starting out early with, because I do not want to run into surprises when the deadline is closing in. At the end of the day I understand a lot more than I did before, however this is not yet visible in terms of progress. 
+
+
 <img src="images/barchartexample.PNG" height="300">
 
 ### April 20th (day 4)
 Another day of working on the radar chart, however the data is refusing to display itself. The rest of the chart shows however, which is quite a good bit of progression. I think it might have to do something with the format of the data or the way I am calling it. 
+
+
 <img src="images/radarchartnodata.PNG" height="300">
 
 ### April 21st (day 5)
 I get the web to work! However the dots on the spokes of the radar chart with an included tooltip are not yet showing. Another problem occurs: when I draw the figure for a fruit that has a nutrient which meets more than your daily recommended allowance, it draws outside of the chart. I will have to have to create a condition where anything above 100% is trimmed to 100%.
+
+
 <img src="images/radarchartexample.PNG" height="300">
 
 ### April 26th (day 6)
@@ -24,14 +32,20 @@ It took me forever to get the tooltip right. However I got it to work after a lo
 
 ### April 27th (day 7)
 Today I focused on writing the condition so that the web would not be drawn beyond the boundaries of the chart. This was more challenging than I thought, because there were different recommended daily allowances for every nutrient. This meant that I could not just write a "if is lower than a number" function, but I had to come up with something else. I then figured I needed to map all the maximum values and add these to the fruit data object. 
+
+
 <img src="images/maxes.PNG" height="300">
 
 ### April 30th (day 8, working at night)
 In order to ensure that I would not run into time crisis, I decide that I am going to have to work at night as well. I mapped all the maxes, and added these to the fruit object. Now I can write a piece of script: if the value is higher than the max, use the max. This works! I now have a radar chart where the "web" in the chart does not go out of bounds. 
+
+
 <img src="images/maxescondition.PNG" height="300">
 
 ### May 3rd (day 9)
 Now that I have the bar chart and the radar chart, I need the charts to be able to switch between fruits or nutrients. I figure the easiest way to do this is by a drop down menu. This involves some HTML as well and I was quite rusty with this, so it took me some time to get this right. After some thorough googling, I first got it right for the bar chart. The on.click function was doing the trick. 
+
+
 <img src="images/dropdownexample.PNG" height="300">
 
 ### May 4th (day 10)
@@ -42,6 +56,8 @@ I continue the work on my HTML page. I then try to figure out how I am going to 
 
 ### May 6th (day 12, working at night)
 I am super tired today, so I decide to do something easy. I map out the colors of the fruit flesh of all the fruits I have so far. I also start to make a beginning on how to incorporate this in the bar chart. The idea is that every bar gets the color of its flesh in order to spot patterns. 
+
+
 <img src="images/colordict.PNG" height="300">
 
 ### May 7th (day 13, working at night)
@@ -55,6 +71,8 @@ I get everything I was stuck on the day before done within an hour. Apparently I
 
 ### May 12th (day 16)
 Basically 100 grams of fruit is hardly satisfying any needs except vitamin C, so I decide to add a factor variable. The integer that is entered will multiply the 100 grams, making the radar 'web' more meaningful and appealing. Especially now the bars have different colors, the bar chart looks really messy. Therefore I roam the internet in order to learn how to "sort" an object by values. I say "sort" because it is not actually possible to really sort an object. I manage to sort the bars, and the sorted bar charts now look much better than they did before. I also figure that I should program a second web in the radar chart, so that fruits can be compared head to head instead of only one at a time. 
+
+
 <img src="images/sortedbars.PNG" height="300">
 
 ### May 14th (day 17, working at night)
@@ -71,14 +89,19 @@ I fixed the double web problem, and now it displays either one or two webs. I al
 
 ### May 19th (day 21)
 I fixed the grams problem! Now you can fill in an amount of grams. The base value is set at 100. It is now time to add the scatterplot with the calories on the y axis and the nutrient on the x axis. I plan to work from inside out again.
-<img src="images/radargramsvalue.PNG" height="300">
+
+<img src="images/radarvalueoption.PNG" height="300">
 
 ### May 22nd (day 22, working at night)
 Today I did some easy, no-brain stuff (because it was a long day). I added text to my website and made it look nice by adding an intro and changing banner images. 
+
+
 <img src="images/intro.PNG" height="300">
 
 ### May 24th (day 23)
 Today I added a "legend" to my radar chart by coloring the drop downs in the same fashion as the "webs" of the radar chart. Furthermore I ensured that all dots of the of the webs have a tooltip on hover, by first drawing the webs and then the dots. I then added a "info button" in the top left of the the nutrient comparison bar chart. I still have to adjust all the text before I will definitively add it to the data, but you can see a preview when you select carbohydrates. Furthermore I added some background color and adjusted some images, and aligned the radar chart better. Quite a productive day! 
+
+
 <img src="images/legend.PNG" height="300">
 
 ### May 25th (day 24)
