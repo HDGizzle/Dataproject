@@ -1,6 +1,7 @@
 var BarChart = {
-  draw: function(figuredata, nutrientname, nutrientinfo) {
+  draw: function(figuredata, nutrientname, nutrientinfo, linked) {
 
+    console.log(linked);
 // define svg parameters
   var svg = d3.select("#histosvg"),
     margin = {top: 20, right: 20, bottom: 60, left: 80},
@@ -52,8 +53,14 @@ var BarChart = {
       .attr("y", function(d) { return y(d.nutrient); })
       .attr("width", x.bandwidth())
       .attr("height", function(d) { return height - y(d.nutrient); })
-      .attr("fill", function(d) { return d.color; })
-      .style("fill-opacity", .8)
+      .attr("fill", function(d) {
+        if (d.Fruit === linked) { return "#000000";}
+        else { return d.color;}
+       })
+      .style("fill-opacity", function(d) {
+        if (d.Fruit === linked) { return 1;}
+        else { return .8;}
+      })
       .style("stroke-width", "1px")
       .style("stroke", "#000000")
       .on("mouseover", function(d, i) {

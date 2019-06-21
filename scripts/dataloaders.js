@@ -1,4 +1,3 @@
-
 var RadarData = function(){
 
   var radarconfig = {radius: 5, w: 550, h: 550, factor: 1, factorLegend: .85,
@@ -38,6 +37,7 @@ var RadarData = function(){
         select.appendChild(el);
 
     }
+
   // recommended daily maxes of relevant nutrients
     maxes = [30, 300, 325, 15, 3000, 1.3, 1, 800, 1.3, 80];
 
@@ -45,43 +45,39 @@ var RadarData = function(){
    var grams = d3.select("#Grams").node().value;
    data = []
    DropdownObjectGrams("#radar-dropdown", datas, nutrienttypes, maxes, data, grams);
-   dataz = []
-   dataz.push(data);
+   dataz = [data]
   });
 
   d3.select("#radar-dropdown2").on("change",function(d){
      var grams = d3.select("#Grams").node().value;
      data2 = []
      DropdownObjectGrams("#radar-dropdown2", datas, nutrienttypes, maxes, data2, grams);
-     dataz2 = []
-     dataz2.push(data2);
+     dataz2 = [data2]
   });
 
   d3.select("#Grams").on("change",function(d){
     var grams = d3.select("#Grams").node().value;
+
     data = []
     DropdownObjectGrams("#radar-dropdown", datas, nutrienttypes, maxes, data, grams);
-    dataz = []
-    dataz.push(data);
+    dataz = [data]
+
     data2 = []
     DropdownObjectGrams("#radar-dropdown2", datas, nutrienttypes, maxes, data2, grams);
-    dataz2 = []
-    dataz2.push(data2);
+    dataz2 = [data2]
   })
 
   d3.select("#Kcaltoggle").on("click", function(d){
       var checkBox = document.getElementById("Kcaltoggle");
-      if (checkBox.checked == true) {
+      if (checkBox.checked == false) {
         var grams = d3.select("#Grams").node().value;
         document.getElementById('unitlabel').innerHTML = 'Grams:';
         data = []
         DropdownObjectGrams("#radar-dropdown", datas, nutrienttypes, maxes, data, grams);
-        dataz = []
-        dataz.push(data);
+        dataz = [data]
         data2 = []
         DropdownObjectGrams("#radar-dropdown2", datas, nutrienttypes, maxes, data2, grams);
-        dataz2 = []
-        dataz2.push(data2);
+        dataz2 = [data2]
         if (typeof dataz === "undefined") {
            RadarChart.draw("#radar-svg", dataz2, radarconfig);
         }
@@ -98,12 +94,10 @@ var RadarData = function(){
         document.getElementById('unitlabel').innerHTML = 'Kcal:';
         data = []
         DropdownObjectKcal("#radar-dropdown", datas, nutrienttypes, maxes, data, grams);
-        dataz = []
-        dataz.push(data);
+        dataz = [data]
         data2 = []
         DropdownObjectKcal("#radar-dropdown2", datas, nutrienttypes, maxes, data2, grams);
-        dataz2 = []
-        dataz2.push(data2);
+        dataz2 = [data2]
         if (typeof dataz === "undefined") {
            RadarChart.draw("#radar-svg", dataz2, radarconfig);
         }
@@ -137,8 +131,7 @@ var RadarData = function(){
 
 var BarData = function() {
 // function to change bar chart when new nutrient is chosen in dropdown
-    d3.select("#barchart-dropdown")
-      .on("change",function(d){
+    d3.select("#barchart-dropdown").on("change",function(d){
 // clear previously drawn svg
         d3.selectAll("#histosvg > *").remove();
 // get string of nutrient names
@@ -171,7 +164,9 @@ var BarData = function() {
               info = info[selected];
 
 // call barchart function
+          if (selected !== "Choose a nutrient") {
           BarChart.draw(figuredata, selected, info);
+        }
         })
         })
       })
@@ -181,7 +176,7 @@ var BarData = function() {
 
 
 
-var LinkedBarData = function(nutrientname) {
+var LinkedBarData = function(nutrientname, pickedfruit) {
 // clear previously drawn svg
     d3.selectAll("#histosvg > *").remove();
 // get string of nutrient names
@@ -212,7 +207,7 @@ var LinkedBarData = function(nutrientname) {
           info = info[selected];
 
 // call barchart function
-          BarChart.draw(figuredata, selected, info);
+          BarChart.draw(figuredata, selected, info, pickedfruit);
         })
         })
       })
@@ -250,22 +245,23 @@ var ScatterData = function() {
           }
           };
           console.log(figuredata);
-
+        if (selected !== "Choose a nutrient") {
         Scatterplot.draw(figuredata, selected, scatterconfig);
+      }
       })
     })
 
     });
 }
 
-var LinkedScatterData = function() {
+var LinkedScatterData = function(nutrientname, pickedfruit) {
   scatterconfig = {margin: 40, w: 1000, h: 500};
-
+  console.log(pickedfruit);
 // function to change bar chart when new nutrient is chosen in dropdown
 // clear previously drawn svg
       d3.selectAll("#scattersvg > *").remove();
 // get string of nutrient names
-      var selected = d3.select("#scatter-dropdown").node().value;
+      var selected = nutrientname
       console.log(selected);
 // load json file
       d3.json("data/nutrients.json").then(function (data) {
@@ -289,13 +285,10 @@ var LinkedScatterData = function() {
           };
           console.log(figuredata);
 
-        Scatterplot.draw(figuredata, selected, scatterconfig);
+        Scatterplot.draw(figuredata, selected, scatterconfig, pickedfruit);
       })
     })
 }
-
-
-
 
 var ObjectSorter = function(arr, key) {
     return arr.sort((a, b) => {

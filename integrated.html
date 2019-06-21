@@ -82,21 +82,23 @@
        <label for="Grams" id=unitlabel>Grams:</label>
        <input type="number" value=500 min=0 id="Grams" align="center">
        <button type="button" id="comparebutton" align="right">Compare!</button>
-       <div id="gramsToKcal">
-         <label class="switch">
-           <input type="checkbox" id="Kcaltoggle">
-           <span class="slider round"></span>
-         </label>
-       </div>
-     </div>
 
+
+
+     </div>
+     <div id="gramsToKcal" align="center">
+       <label class="switch" for="Kcaltoggle" id=kcaltoggletext>grams or calories
+         <input type="checkbox" id="Kcaltoggle">
+         <span class="slider round"></span>
+       </label>
+     </div>
 
 
     <div id="radar-svg" align="center"></div>
      <script>
 
        RadarData();
-  
+
 
      </script>
    </div>
@@ -118,6 +120,7 @@
     </em></p>
     <plot align="center"></plot>
     <select id="barchart-dropdown">
+      <option>Choose a nutrient</option>
       <option value="Carbohydrate, by difference in gram">Carbohydrates (gram)</option>
       <option value="Energy in kcal">Energy (kcal)</option>
       <option value="Fiber, total dietary in gram">Fiber (gram)</option>
@@ -157,6 +160,7 @@
     <plot align="center"></plot>
 
     <select id="scatter-dropdown">
+      <option>Choose a nutrient</option>
       <option value="Carbohydrate, by difference in gram">Carbohydrates (gram)</option>
       <option value="Fiber, total dietary in gram">Fiber (gram)</option>
       <option value="Folate, DFE in microgram">Folate/B11 (microgram)</option>

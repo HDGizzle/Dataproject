@@ -1,5 +1,5 @@
 var Scatterplot = {
-  draw: function(data, xtext, cfg) {
+  draw: function(data, xtext, cfg, linked) {
 // define data for x and y axis
 var x = function(d) { return d.nutrient; }
 var y = function(d) { return d.kcal; }
@@ -9,9 +9,18 @@ var xScaler = function(d) { return xScale(d.nutrient); }
 
 var yScaler = function(d) { return yScale(d.kcal); }
 
+console.log(linked);
 
 // define colors for scatterplot categories
-var colorcategory = function (d) { return d.color;}
+var colorcategory = function(d) {
+  if (d.Fruit === linked) { return "#000000";}
+  else { return d.color;}
+ }
+
+ var circleradius = function(d) {
+   if (d.Fruit === linked) { return 8;}
+   else { return 5;}
+  }
 
 // define text for axes and title
 var ytext = "Kcal per 100 grams"
@@ -32,7 +41,8 @@ var tooltipdata = (d) => {
 
    // Function for yScaler
    var yScale = d3.scaleLinear()
-     .domain([d3.min(data, y) - (d3.max(data, y) / 25), d3.max(data, y) + (d3.max(data, y) / 15)])
+  // d3.min(data, y) - (d3.max(data, y) / 25) if you do not want to start at 0
+     .domain([0, d3.max(data, y) + (d3.max(data, y) / 15)])
      .range([cfg.h - cfg.margin, cfg.margin]);
 
    // axis scaling
@@ -55,7 +65,7 @@ var tooltipdata = (d) => {
      .append("circle")
      .attr("cx", xScaler)
      .attr("cy", yScaler)
-     .attr("r", 5)
+     .attr("r", circleradius)
      .attr("fill", (colorcategory))
      .style("stroke-width", "2px")
      .style("stroke", "#000000")

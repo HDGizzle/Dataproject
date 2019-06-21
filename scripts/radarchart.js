@@ -77,11 +77,11 @@ var RadarChart = {
     .attr("y", function(d, i){return cfg.h/2*(1-Math.cos(i*cfg.radians/total))-20*Math.cos(i*cfg.radians/total);});
 // draw and color data area - change opacity when hovered over
 
-  dataValues = [];
+  dataValues1 = [];
   dataValues2 = [];
   series = 0;
   if (typeof d !== "undefined"){
-    WebDrawer(d, g, cfg, total, tooltip, dataValues);
+    WebDrawer(d, g, cfg, total, tooltip, dataValues1);
   };
   series = 1;
   if (typeof d2 !== "undefined"){
@@ -89,7 +89,7 @@ var RadarChart = {
   };
   series = 0;
   if (typeof d !== "undefined"){
-    TooltipDrawer(d, g, cfg, total, tooltip, dataValues);
+    TooltipDrawer(d, g, cfg, total, tooltip, dataValues1);
   };
   series = 1;
   if (typeof d2 !== "undefined"){
@@ -100,7 +100,6 @@ var RadarChart = {
 
 var WebDrawer = function(input, g, cfg, total, tooltip, dataValues) {
   input.forEach(function(y, x){
-    // dataValues = [];
     g.selectAll(".nodes")
     .data(y, function(j, i){
       if (j.value > j.max){
@@ -117,6 +116,7 @@ var WebDrawer = function(input, g, cfg, total, tooltip, dataValues) {
     }
     });
     dataValues.push(dataValues[0]);
+
     g.selectAll(".nutrient")
      .data([dataValues])
      .enter()
@@ -147,9 +147,7 @@ var WebDrawer = function(input, g, cfg, total, tooltip, dataValues) {
        .transition(200)
        .style("fill-opacity", cfg.opacityArea);
    });
-    series++;
   });
-  series=0;
 }
 
 var TooltipDrawer = function(input, g, cfg, total, tooltip, dataValues) {
@@ -198,21 +196,21 @@ var TooltipDrawer = function(input, g, cfg, total, tooltip, dataValues) {
     .on("mouseout", function(d){ tooltip.style("display", "none");})
     .on("click", function(d){
       var checkBox = document.getElementById("Kcaltoggle");
-      if (checkBox.checked == true) {
+      if (checkBox.checked == false) {
       var element = document.getElementById("histosvg");
       element.scrollIntoView({behavior: "smooth", block: "end", inline: "nearest"});
       console.log("confirmed");
-      LinkedBarData(d.nutrient);
+      LinkedBarData(d.nutrient, d.fruitname);
     }
     else{
       var element = document.getElementById("scattersvg");
       element.scrollIntoView({behavior: "smooth", block: "end", inline: "nearest"});
       console.log("confirmed");
-      LinkedScatterData(d.nutrient);
+      LinkedScatterData(d.nutrient, d.fruitname);
     }
     });
 
-    series++
+    // series++
   });
 }
 
@@ -226,7 +224,7 @@ for (i = 0; i < nutrienttypes.length; i++) {
   console.log(grams);
   name = nutrienttypes[i];
   max = maxes[i]
-  var dict = {"nutrient": name, "value": value, "max": max}
+  var dict = {"nutrient": name, "value": value, "max": max, "fruitname": selected}
   data.push(dict);
 }
 }
@@ -241,7 +239,7 @@ for (i = 0; i < nutrienttypes.length; i++) {
   console.log(grams);
   name = nutrienttypes[i];
   max = maxes[i]
-  var dict = {"nutrient": name, "value": value, "max": max}
+  var dict = {"nutrient": name, "value": value, "max": max, "fruitname": selected}
   data.push(dict);
 }
 }
