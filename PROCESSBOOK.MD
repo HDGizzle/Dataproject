@@ -26,11 +26,9 @@ It took me forever to get the tooltip right. However I got it to work after a lo
 Today I focused on writing the condition so that the web would not be drawn beyond the boundaries of the chart. This was more challenging than I thought, because there were different recommended daily allowances for every nutrient. This meant that I could not just write a "if is lower than a number" function, but I had to come up with something else. I then figured I needed to map all the maximum values and add these to the fruit data object. 
 <img src="images/maxes.PNG" height="300">
 
-
 ### April 30th (day 8, working at night)
 In order to ensure that I would not run into time crisis, I decide that I am going to have to work at night as well. I mapped all the maxes, and added these to the fruit object. Now I can write a piece of script: if the value is higher than the max, use the max. This works! I now have a radar chart where the "web" in the chart does not go out of bounds. 
 <img src="images/maxescondition.PNG" height="300">
-
 
 ### May 3rd (day 9)
 Now that I have the bar chart and the radar chart, I need the charts to be able to switch between fruits or nutrients. I figure the easiest way to do this is by a drop down menu. This involves some HTML as well and I was quite rusty with this, so it took me some time to get this right. After some thorough googling, I first got it right for the bar chart. The on.click function was doing the trick. 
@@ -73,14 +71,18 @@ I fixed the double web problem, and now it displays either one or two webs. I al
 
 ### May 19th (day 21)
 I fixed the grams problem! Now you can fill in an amount of grams. The base value is set at 100. It is now time to add the scatterplot with the calories on the y axis and the nutrient on the x axis. I plan to work from inside out again.
+<img src="images/radargramsvalue.PNG" height="300">
 
 ### May 22nd (day 22, working at night)
 Today I did some easy, no-brain stuff (because it was a long day). I added text to my website and made it look nice by adding an intro and changing banner images. 
+<img src="images/intro.PNG" height="300">
 
 ### May 24th (day 23)
 Today I added a "legend" to my radar chart by coloring the drop downs in the same fashion as the "webs" of the radar chart. Furthermore I ensured that all dots of the of the webs have a tooltip on hover, by first drawing the webs and then the dots. I then added a "info button" in the top left of the the nutrient comparison bar chart. I still have to adjust all the text before I will definitively add it to the data, but you can see a preview when you select carbohydrates. Furthermore I added some background color and adjusted some images, and aligned the radar chart better. Quite a productive day! 
+<img src="images/legend.PNG" height="300">
 
 ### May 25th (day 24)
 Today I structured my files into correct folders, in a hopefully desirable structure in the eyes of the tutors. I also added some outline to the bars and the dots so I can maintain the white fruitflesh color. Furthermore I added some cosmetic changes to make the whole thing look nicer. 
 
-May 26th (day 25): Today I spent all day getting my additional nutrient information in place. It was more work than expected, 2800 words. 
+### May 26th (day 25)
+Today I spent all day getting my additional nutrient information in place. It was more work than expected, 2800 words. 
