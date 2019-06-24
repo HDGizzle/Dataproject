@@ -1,20 +1,26 @@
+/* Gijs Beerens - 10804463
+This CSS file contains all styling for the HTML elements in the web page.
+*/
+
+/* __________________________________________ */
+/* __________PLOT-UNRELATED STYLING__________ */
 body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif;}
 body, html {
-    height: 100%;
-    color: #000;
-    line-height: 1.8;
-    background-color: rgba(119,136,153, 0.1);
+  height: 100%;
+  color: #000;
+  line-height: 1.8;
+  background-color: rgba(119,136,153, 0.1);
 }
 
-
-
+/* navbar styling */
 .w3-bar-item {
-  color: #01FF70;
+  color: #ffffff;
+  background-color: rgba(119,136,153, 0.7);
   font-weight: bold;
   fill: grey;
 }
 
-/* Create a Parallax Effect */
+/* create a Parallax Effect */
 .bgimg-1, .bgimg-2 {
     background-attachment: fixed;
     background-position: center;
@@ -22,167 +28,75 @@ body, html {
     background-size: cover;
 }
 
-/* First image (Logo. Full height) */
+/* first image */
 .bgimg-1 {
     background-image: url('images/010101.jpg');
     min-height: 100%;
 }
 
-/* Second image (ASSIGNMENT) */
+/* second image */
 .bgimg-2 {
     background-image: url("images/fruitbanner.jpg");
     min-height: 400px;
 }
 
+/* third image */
 .bgimg-3 {
     background-image: url('images/moleculenbanner.jpg');
-    /* min-height: 400px; */
 }
 
+/* header styling */
 .w3-wide {letter-spacing: 6px;}
 .w3-hover-opacity {cursor: pointer;}
 
 /* Turn off parallax scrolling for tablets and phones */
 @media only screen and (max-device-width: 1600px) {
-    .bgimg-1, .bgimg-2, .bgimg-3 {
-        background-attachment: scroll;
-        min-height: 200px;
-    }
+  .bgimg-1, .bgimg-2, .bgimg-3 {
+      background-attachment: scroll;
+      min-height: 200px;
+  }
 }
 
-.legend {
-  padding: 5px;
-  font: 14px sans-serif;
-}
+/* ______________________________________________*/
+/* __________RADARCHART-RELATED STYLING__________ */
 
-.axis { font: 12px sans-serif;
-
- }
- * {
-   box-sizing: border-box;
- }
-
- rect:hover {
-   fill: #777;
- }
-
-.m {
-  text-align: right;
-  font: 14px sans-serif;
-  color: Orange;
-}
-
-.text {
-  font: 12px sans-serif;
-}
-
-.tooltip {
-  color: white;
-  position: absolute;
-  text-align: center;
-  min-width: 50px;
-  height: auto;
-  padding: 2px;
-  font: 14px sans-serif;
-  background: rgba(0,0,0,.8);
-  border: 2px solid black;
-  pointer-events: none;
-}
-
-.tooltip2 {
-  color: white;
-  position: absolute;
-    display: inline;
-  text-align: center;
-  max-width: 900px;
-  height: auto;
-  padding: 2px;
-  font: 14px sans-serif;
-  background: rgba(0,0,0,.8);
-  border: 2px solid black;
-  pointer-events: none;
-}
-
-.axis path,
-.axis line {
-  fill: none;
-  stroke: #777;
-  shape-rendering: crispEdges;
-  stroke-width: 3px;
-}
-
-.toolTip {
-pointer-events: none;
-position: absolute;
-  display: none;
-min-width: 50px;
-height: auto;
-background: none repeat scroll 0 0 #ffffff;
-padding: 9px 14px 6px 14px;
-border-radius: 2px;
-text-align: center;
-line-height: 1.3;
-color: #5B6770;
-box-shadow: 0px 3px 9px rgba(0, 0, 0, .15);
-}
-.toolTip:after {
-content: "";
-width: 0;
-height: 0;
-border-left: 12px solid transparent;
-border-right: 12px solid transparent;
-border-top: 12px solid white;
-position: absolute;
-bottom: -10px;
-left: 50%;
-margin-left: -12px;
-}
-.toolTip span {
-font-weight: 500;
-color: #081F2C;
-}
-
+/* radarchart variables positioning */
 .radarvariables {
   margin: auto;
   width: 55%;
 }
 
+/* first radar dropdown styling */
 #radar-dropdown {
   height: 35px;
   background-color: #800000;
   opacity: 0.8;
 }
 
+/* second radar dropdown styling */
 #radar-dropdown2 {
   height: 35px;
   background-color: #ffa500;
   opacity: 0.8;
 }
 
+/* unit quantity input styling */
 #Grams {
   height: 35px;
   width: 75px;
 }
 
+/* compare button styling */
 #comparebutton {
   height: 36px;
 }
 
-
-
-
-.Qmark {
-  font-size: 20px;
-  font-weight: bold;
+/* unit label styling */
+#unitlabel {
+  color: green;
 }
 
-
-
-
-
-
-
-
+/* unit of measurement switch positioning */
 .switch {
   position: relative;
   display: inline-block;
@@ -190,14 +104,14 @@ color: #081F2C;
   height: 34px;
 }
 
-/* Hide default HTML checkbox */
+/* hide default HTML checkbox */
 .switch input {
   opacity: 0;
   width: 0;
   height: 0;
 }
 
-/* The slider */
+/* unit of measurement switch styling */
 .slider {
   position: absolute;
   cursor: pointer;
@@ -205,11 +119,11 @@ color: #081F2C;
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: #ccc;
+  background-color: green;
   -webkit-transition: .4s;
   transition: .4s;
 }
-
+/* slider characteristics untoggled */
 .slider:before {
   position: absolute;
   content: "";
@@ -222,25 +136,45 @@ color: #081F2C;
   transition: .4s;
 }
 
+/* slider bg color when toggled */
 input:checked + .slider {
-  background-color: #2196F3;
+  background-color: blue;
 }
-
 input:focus + .slider {
   box-shadow: 0 0 1px #2196F3;
 }
 
+/* dynamic slider movement */
 input:checked + .slider:before {
   -webkit-transform: translateX(26px);
   -ms-transform: translateX(26px);
   transform: translateX(26px);
 }
 
-/* Rounded sliders */
+/* rounded sliders */
 .slider.round {
   border-radius: 34px;
 }
-
 .slider.round:before {
   border-radius: 50%;
+}
+
+/* ____________________________________________ */
+/* __________BARCHART-RELATED STYLING__________ */
+
+/* style barchart dropdown */
+#barchart-dropdown {
+  height: 35px;
+  background-color: rgba(119,136,153, 0.3);
+  opacity: 0.8;
+}
+
+/* _______________________________________________ */
+/* __________SCATTERPLOT-RELATED STYLING__________ */
+
+/* style scatter dropdown */
+#scatter-dropdown {
+  height: 35px;
+  background-color: rgba(119,136,153, 0.3);
+  opacity: 0.8;
 }

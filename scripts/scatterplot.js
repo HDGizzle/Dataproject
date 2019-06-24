@@ -1,3 +1,11 @@
+// Gijs Beerens - 10804463
+// This file contains all script neccessary to draw a scatterplot with a provided
+// dataset (which is created in dataloaders.js).
+
+// Sources:
+// https://bl.ocks.org/Jverma/076377dd0125b1a508621441752735fc
+// https://github.com/HDGizzle/DataProcessing/blob/master/Homework/Week_6/linkedviews.js
+
 var Scatterplot = {
   draw: function(data, xtext, cfg, linked) {
 
@@ -53,7 +61,14 @@ var Scatterplot = {
 
   // axis scaling
   var xAxis = d3.axisBottom().scale(xScale);
-  var yAxis = d3.axisLeft().scale(yScale);
+
+  // var yAxis = d3.axisLeft().scale(yScale);
+  var yAxis = d3.axisLeft(yScale)
+    .ticks(5)
+    .tickFormat(function(d) {
+    return d;
+  })
+    .tickSizeInner([-cfg.w + cfg.margin * 5]);
 
   // define scatterplot tooltip
   const tooltip = d3.select('plot').append('div')
@@ -64,19 +79,7 @@ var Scatterplot = {
     .attr("width", cfg.w)
     .attr("height", cfg.h);
 
-  // draw dots with according color and tooltip
-  svg.selectAll("circle")
-    .data(data)
-    .enter()
-    .append("circle")
-    .attr("cx", xScaler)
-    .attr("cy", yScaler)
-    .attr("r", circleradius)
-    .attr("fill", (colorcategory))
-    .style("stroke-width", "2px")
-    .style("stroke", "#000000")
-    .on('mouseover', tooltipdata)
-    .on('mouseout', () => tooltip.transition().duration(500).style('opacity', 0))
+
 
   // draw x axis title
   svg.append('text')
@@ -104,8 +107,23 @@ var Scatterplot = {
     .attr("fill", "#000")
     .attr("transform", "rotate(-90)")
     .attr("x", - cfg.margin)
-    .attr("dy", "2em")
+    .attr("dy", "-2.5em")
     .attr("text-anchor", "end")
     .text(ytext);
+
+
+  // draw dots with according color and tooltip
+  svg.selectAll("circle")
+    .data(data)
+    .enter()
+    .append("circle")
+    .attr("cx", xScaler)
+    .attr("cy", yScaler)
+    .attr("r", circleradius)
+    .attr("fill", (colorcategory))
+    .style("stroke-width", "2px")
+    .style("stroke", "#000000")
+    .on('mouseover', tooltipdata)
+    .on('mouseout', () => tooltip.transition().duration(500).style('opacity', 0))
   }
 }

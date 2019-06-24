@@ -1,3 +1,13 @@
+// Gijs Beerens - 10804463
+// This file contains all script neccessary to draw a bar chart with a provided
+// dataset (which is created in dataloaders.js).
+
+// Sources:
+// https://bl.ocks.org/caravinden/d04238c4c9770020ff6867ee92c7dac1
+// https://codepen.io/benrnorman/pen/eBRNOw
+// https://github.com/HDGizzle/DataProcessing/blob/master/Homework/Week_4/index.html
+// https://stackoverflow.com/questions/42155320/how-to-make-a-bar-bigger-on-mouseover-in-d3
+
 var BarChart = {
   draw: function(figuredata, nutrientname, nutrientinfo, linked) {
 
@@ -6,10 +16,6 @@ var BarChart = {
     margin = {top: 20, right: 20, bottom: 60, left: 80},
     width = +svg.attr("width") - margin.left - margin.right,
     height = +svg.attr("height") - margin.top - margin.bottom;
-
-  // define bar colours
-  var colours = d3.scaleOrdinal()
-    .range(["#6F257F", "#CA0D59"]);
 
   // define tooltip and info box
   var tooltip = d3.select("body").append("div").attr("class", "tooltip");
@@ -41,8 +47,9 @@ var BarChart = {
   // draw y axis info
   g.append("g")
     .attr("class", "axis axis--y")
-    .call(d3.axisLeft(y).ticks(5).tickFormat(function(d) { return d; }).tickSizeInner([-width]))
+    .call(d3.axisLeft(y).ticks(6).tickFormat(function(d) { return d; }).tickSizeInner([-width]))
     .append("text")
+    .style("font", "15px Sans-serif")
     .attr("transform", "rotate(-90)")
     .attr("y", -38)
     .attr("dy", "0.1em")
@@ -77,7 +84,7 @@ var BarChart = {
     .style("stroke-width", "1px")
     .style("stroke", "#000000")
     .on("mouseover", function(d, i) {
-      var xPos = +d3.select(this).attr("x")
+      var xPos = +d3.select(this).attr("x");
       var wid = +d3.select(this).attr("width");
       d3.select(this).attr("x", xPos - 10).attr("width", wid + 20);
       tooltip.transition().duration(200).style('opacity', 0.9);

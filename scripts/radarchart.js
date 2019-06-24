@@ -1,3 +1,16 @@
+// Gijs Beerens - 10804463
+// This file contains all script neccessary to draw a radar chart with a provided
+// dataset (which is created in dataloaders.js).
+
+// Sources:
+// http://bl.ocks.org/nbremer/6506614
+// https://www.d3-graph-gallery.com/spider
+// https://blockbuilder.org/Ananda90/8269def4e60b17d57d358b2e8219f62d
+// https://bl.ocks.org/alandunning/4c36eb1abdb248de34c64f5672afd857
+// https://flaviocopes.com/how-to-check-undefined-property-javascript/
+// https://github.com/HDGizzle/DataProcessing/blob/master/Homework/Week_6/linkedviews.js
+
+// draws the radar chart
 var RadarChart = {
   draw: function(id, d, cfg, d2){
 
@@ -128,6 +141,7 @@ var RadarChart = {
   }
 };
 
+
 // function for drawing the webs
 var WebDrawer = function(input, g, cfg, total, tooltip, dataValues) {
 
@@ -183,6 +197,7 @@ var WebDrawer = function(input, g, cfg, total, tooltip, dataValues) {
       });
   });
 }
+
 
 // function for drawing the tooltip dots
 var TooltipDrawer = function(input, g, cfg, total, tooltip, dataValues) {
@@ -247,38 +262,3 @@ var TooltipDrawer = function(input, g, cfg, total, tooltip, dataValues) {
     });
   });
 }
-
-
-var DropdownObjectGrams = function(ddName, datas, nutrienttypes, maxes, data, grams) {
-  // get string of selected dropdown item
-  var selected = d3.select(ddName).node().value;
-
-  // ensure only a matching nutrient name can be selected
-  if (selected != "Choose a fruit") {
-    // loop through nutrition dict of each fruit
-    for (i = 0; i < nutrienttypes.length; i++) {
-      value = (datas[selected][nutrienttypes[i]] / 100) * grams;
-      name = nutrienttypes[i];
-      max = maxes[i]
-      var dict = {"nutrient": name, "value": value, "max": max, "fruitname": selected}
-      data.push(dict);
-    }
-  }
-};
-
-var DropdownObjectKcal = function(ddName, datas, nutrienttypes, maxes, data, grams) {
-  // get string of selected dropdown item
-  var selected = d3.select(ddName).node().value;
-
-  // ensure only a matching nutrient name can be selected
-  if (selected != "Choose a fruit") {
-    // loop through nutrition dict of each fruit
-    for (i = 0; i < nutrienttypes.length; i++) {
-      value = (datas[selected][nutrienttypes[i]] / datas[selected]["Energy in kcal"]) * grams;
-      name = nutrienttypes[i];
-      max = maxes[i]
-      var dict = {"nutrient": name, "value": value, "max": max, "fruitname": selected}
-      data.push(dict);
-    }
-  }
-};

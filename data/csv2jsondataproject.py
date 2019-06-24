@@ -1,8 +1,20 @@
+# Gijs Beerens - 10804463
+# This file merges many CSV's with information about fruits into one big
+# pandas dataframe. The dataframe is then converted into a JSON file,
+# making it suitable for D3 processing. Furthermore a JSON file with fruit
+# flesh colors and a JSON file with information about nutrients is created.
+
+# Sources:
+# https://stackoverflow.com/questions/11285613/selecting-multiple-columns-in-a-pandas-dataframe
+# https://stackoverflow.com/questions/11346283/renaming-columns-in-pandas
+# https://stackoverflow.com/questions/21164910/how-do-i-delete-a-column-that-contains-only-zeros-in-pandas
+
 import csv
 import json
 import pandas as pd
 from os import walk
 
+# this is the dictionary with fruit flesh colors
 colors = {
 # red
 "#ff0000": ["Cherry", "Cranberry", "Pomegranate", "Strawberry", "Watermelon"],
@@ -20,6 +32,7 @@ colors = {
 "#fdfe25": ["KiwiGold", "Passionfruit", "Plum"]
 }
 
+# this is the dictionary with nutrient information
 nutrientinfo = {
 "Carbohydrate, by difference in gram": ["The primary function of carbohydrates is to provide the body with energy. After consumption, carbohydrates (also named carbs) are broken down into glucose. This glucose can then be used to produce ATP (adenosine triphosphate), which can be seen as fuel for the cells in the body. Even though ATP can be produced from different nutrients (for example protein and fats), it is easiest for the body to produce ATP from carbohydrates.", "If you consume more carbs than your body requires, these carbs will be transformed into glycogen. The glycogen reserves of your body are mostly stored in your liver and muscles, and ensure the presence of fuel for the body in between meals. However, once your glycogen reserves are filled and you consume carbs, the body will convert these carbs into body fat. Systematically consuming too much carbohydrates can thus make you overweight!", "Systematically consuming too little carbs will cause to body to go into a state of ketosis. Ketosis is a state where your body fuels itself with ketones instead of glucose. Ketones can be extracted by the body from protein and fats. Even though the brain can largely function on ketones, it still requires some degree of glucose to maintain full function. Being fully deprived of carbs will therefore cause the conversion of muscle mass and fat tissue into glucose. Because of this fat loss, many people try to lose weight by carbohydrate deprivation. There is no evidence of carbohydrate deprivation being harmful to the human body, unless your body fat percentage is at such a low level that it cannot convert into glucose anymore."],
 
@@ -52,11 +65,11 @@ nutrientinfo = {
 "Vitamin C, total ascorbic acid in milligram": ["Vitamin C is an ‘antioxidant’, which strengthens the immune system. It prevents damage to your cells and ensures correct functioning of the liver. It also ensures healthy white blood cells, which attack diseases that enter your body. The daily recommended amount of vitamin C is 75 milligram for women and 90 for men.", "It is virtually impossible to consume too much vitamin C by just eating food, as symptoms of overconsumption will occur when more than 2000 milligram per day is consumed. However, supplements could achieve such numbers. Consuming such a large amount of vitamin C can lead to diarrhea and nausea.", "Consuming too little vitamin C will lead to all kinds of visible defects of your body. Amongst these effects are dry skin, bumpy skin, corkscrew-shaped body hair, spots on your fingernails and tooth loss. Furthermore your immune system is weakened, you will feel tired more often and the healing of wounds and bruises will go much slower. Vitamin C deficiency can in extreme cases even lead to scurvy!"]
 }
 
+# add all filenames in the raw_data directory to the array
 csv_dataset = []
 for (dirpath, dirnames, filenames) in walk("raw_data"):
     csv_dataset.extend(filenames)
     break
-
 
 # call initial file
 csv_data = csv_dataset[0]
@@ -64,8 +77,6 @@ csv_data = csv_dataset[0]
 # name of the current fruit
 fruitname = csv_data[0:-4]
 
-print(fruitname)
-print(csv_dataset)
 # open fruit csv file
 csvfile = open(f"raw_data/{csv_data}", "r")
 
@@ -75,15 +86,13 @@ df = pd.read_csv(csvfile, skiprows=4)
 # delete unneccesary columns
 df = df.loc[:, :"1Value per 100 g"]
 
+# replace the unit names for abbreviations
 df["Unit"] = df["Unit"].replace("mg", "milligram")
 df["Unit"] = df["Unit"].replace("µg", "microgram")
 df["Unit"] = df["Unit"].replace("g", "gram")
 
-print(df["Unit"])
-
 # add weight unit to nutrient column
 df["Nutrient"] = df["Nutrient"] + " in " + df["Unit"]
-
 
 # delete weight unit column
 del df["Unit"]
@@ -94,29 +103,28 @@ df.set_index('Nutrient', inplace=True)
 # change column name
 df = df.rename(columns = {"1Value per 100 g": fruitname})
 
-
-
-
 csv_dataset = csv_dataset[1: ]
 
-
+# loop through every csv file
 for fruit in csv_dataset:
     data = open(f"raw_data/{fruit}", "r")
 
+    # trim names
     fruittext = fruit[0:-4]
 
+    # create dataframe of fruit csv's
     dataf = pd.read_csv(data, skiprows=4)
 
     # delete unneccesary columns
     dataf = dataf.loc[:, :"1Value per 100 g"]
 
+    # replace unit names with abbreviations
     dataf["Unit"] = dataf["Unit"].replace("mg", "milligram")
     dataf["Unit"] = dataf["Unit"].replace("µg", "microgram")
     dataf["Unit"] = dataf["Unit"].replace("g", "gram")
 
     # add weight unit to nutrient column
     dataf["Nutrient"] = dataf["Nutrient"] + " in " + dataf["Unit"]
-
 
     # delete weight unit column
     del dataf["Unit"]
@@ -126,47 +134,32 @@ for fruit in csv_dataset:
 
     # change column name
     dataf = dataf.rename(columns = {"1Value per 100 g": fruittext})
-    # make nutrient type dataframe index
-    # dataf.set_index('Nutrient', inplace=True)
-    # print(dataf)
 
-
+    # select relevant data
     df = df.join(dataf[fruittext])
     df = df.loc["Caffeine in milligram" : "Vitamin D in IU"]
     df[fruittext] = pd.to_numeric(df[fruittext])
-    # # make nutrient type dataframe index
-    # dataf.set_index(fruittext, inplace=True)
 
-
-
-# df = df.loc["Caffeine in mg" : "Vitamin D in IU"]
-
+# turn all string numbers into real numbers
 df["Apple"] = pd.to_numeric(df["Apple"])
 
+# transpose table
 df = df.transpose()
 
+# delete all nutrients that are not present in fruit
 df = df.loc[:, (df != 0).any(axis=0)]
 
-# df = pd.DataFrame(df, columns=headers)
+# turn fruitnames into index
 fruitnames = df.index
 
-print(df["Energy in kcal"])
-
-
-
+# turn df into JSON format
 jsonfile = json.loads(df.to_json(orient="index"))
-# jsonfile = json.loads(df.to_json(orient="table"))
-
-
-
-# print(jsonfile)
-# print(nutrientinfo)
 
 with open('nutrients.json', 'w') as outfile:
     json.dump(jsonfile, outfile)
 
+# create colordict with data from top of page
 colordict = {}
-
 for fruit in fruitnames:
     for key, value in colors.items():
         for i in value:

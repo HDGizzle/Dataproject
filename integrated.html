@@ -1,5 +1,18 @@
-<!-- Gijs Beerens - 10804463 -->
-<!-- CSS template source: https://www.w3schools.com/w3css/tryw3css_templates_parallax.html -->
+<!-- Gijs Beerens - 10804463
+This HTML contains space for three figures: A radar chart, a bar chart,
+and a scatterplot. I have used a template by W3schools.com to get an idea of the
+layout of an attractive page, but have modified it myself to make it fit the project.
+
+Sources:
+web template: https://www.w3schools.com/w3css/tryw3css_templates_parallax.html
+https://www.w3schools.com/tags/att_input_type_number.asp
+https://www.w3schools.com/css/css_dropdowns.asp
+https://www.w3schools.com/tags/tag_label.asp
+https://www.w3schools.com/tags/tag_button.asp
+https://www.w3schools.com/howto/howto_css_switch.asp
+https://www.w3schools.com/tags/att_div_align.asp
+https://www.w3schools.com/tags/tag_option.asp
+-->
 
 <!DOCTYPE html>
 <html>
@@ -10,6 +23,8 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" type="text/css" href="integrated.css">
+<link rel="stylesheet" type="text/css" href="barchart.css">
+<link rel="stylesheet" type="text/css" href="radarchart.css">
 <script src="//d3js.org/d3.v5.min.js"></script>
 <script src="scripts/barchart.js"></script>
 <script src="scripts/radarchart.js"></script>
@@ -18,7 +33,7 @@
 
 <body>
 <!-- Navbar (sit on top) -->
-  <div class="w3-top">
+  <div class="w3-center w3-top">
     <div class="w3-bar" id="myNavbar">
       <a class="w3-bar-item w3-button w3-hover-black w3-hide-medium w3-hide-large w3-right" href="javascript:void(0);" onclick="toggleFunction()" title="Toggle Navigation Menu">
         <i class="fa fa-bars"></i>
@@ -64,44 +79,37 @@
 
   <!-- first container with radar chart in it  -->
   <div class="w3-content w3-container w3-padding-64" id="HEAD-TO-HEAD FRUIT COMPARISON">
-     <h3 class="w3-center">Head-to-head fruit comparison</h3>
-     <p class="w3-center"><em>Here you can compare fruit head-to-head, where the radar chart indicates what percentage of your recommended daily allowance of each relevant nutrient is met.
+    <h3 class="w3-center">Head-to-head fruit comparison</h3>
+    <p class="w3-center"><em>Here you can compare fruit head-to-head, where the radar chart indicates what percentage of your recommended daily allowance of each relevant nutrient is met.
        You can either select one fruit, or compare two fruits head to head to see which fruit is better than the other in terms of each relevant nutrient. The standard value is set at 100 grams, but as you can see for yourself
        100 grams of any kind of fruit hardly contains any nutrients besides vitamin C. By changing the amount of grams the figures become more interesting, but try for yourself!
        You can also hover over the dots to see the actual content of each nutrient.
-     </em></p>
-     <plot align="center"></plot>
-     <div class="radarvariables" align=center>
-       <select id="radar-dropdown" align=center>
-         <option>Choose a fruit</option>
-       </select>
-
-       <select id="radar-dropdown2" align="center">
-           <option>Choose a fruit</option>
-       </select>
-       <label for="Grams" id=unitlabel>Grams:</label>
-       <input type="number" value=500 min=0 id="Grams" align="center">
-       <button type="button" id="comparebutton" align="right">Compare!</button>
-
-
-
-     </div>
-     <div id="gramsToKcal" align="center">
-       <label class="switch" for="Kcaltoggle" id=kcaltoggletext>grams or calories
-         <input type="checkbox" id="Kcaltoggle">
-         <span class="slider round"></span>
-       </label>
-     </div>
-
-
+    </em></p>
+    <plot align="center"></plot>
+    <!-- dropdowns, value entry, compare button -->
+    <div class="radarvariables" align=center>
+      <select id="radar-dropdown" align=center>
+        <option>Choose a fruit</option>
+      </select>
+      <select id="radar-dropdown2" align="center">
+        <option>Choose a fruit</option>
+      </select>
+      <label for="Grams" id=unitlabel>Grams:</label>
+      <input type="number" value=500 min=0 id="Grams" align="center">
+      <button type="button" id="comparebutton" align="right">Compare!</button>
+    </div>
+    <!-- switch for cals and grams -->
+    <div id="gramsToKcal" align="center">
+      <label class="switch" for="Kcaltoggle" id=kcaltoggletext>
+        <input type="checkbox" id="Kcaltoggle">
+        <span class="slider round"></span>
+      </label>
+    </div>
     <div id="radar-svg" align="center"></div>
-     <script>
-
-       RadarData();
-
-
-     </script>
-   </div>
+    <script>
+      RadarData();
+    </script>
+  </div>
 
   <!-- second banner with title -->
   <div class="bgimg-3 w3-display-container w3-opacity-min">
@@ -158,7 +166,6 @@
       to the amount of calories present in fruits, but see for yourself if you find anything revealing!
     </em></p>
     <plot align="center"></plot>
-
     <select id="scatter-dropdown">
       <option>Choose a nutrient</option>
       <option value="Carbohydrate, by difference in gram">Carbohydrates (gram)</option>

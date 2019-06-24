@@ -1,3 +1,16 @@
+// Gijs Beerens - 10804463
+// In this file the data for the figures is formatted and the figures are drawn under the
+// conditions that are set by the user, such as fruit type, nutrient type,
+// amount of grams and the choice between per X calories or per X grams.
+
+// Sources:
+// https://www.w3schools.com/howto/howto_js_dropdown.asp
+// https://www.w3schools.com/howto/howto_css_switch.asp
+// https://stackoverflow.com/questions/7889006/sorting-arrays-in-javascript-by-object-key-value
+// https://stackoverflow.com/questions/5638513/selecting-an-option-element-from-a-dropdown-by-its-text-value
+// https://stackoverflow.com/questions/10784018/how-can-i-remove-or-replace-svg-content
+// https://stackoverflow.com/questions/10264961/using-javascript-to-change-style-color-of-a-label-element-fails
+
 var RadarData = function(){
 
   // dimensions of radarchart
@@ -79,6 +92,7 @@ var RadarData = function(){
       if (checkBox.checked == false) {
         var grams = d3.select("#Grams").node().value;
         document.getElementById('unitlabel').innerHTML = 'Grams:';
+        document.getElementById('unitlabel').style.color = "green";
 
         data = []
         DropdownObjectGrams("#radar-dropdown", datas, nutrienttypes, maxes, data, grams);
@@ -102,6 +116,7 @@ var RadarData = function(){
       else {
         var grams = d3.select("#Grams").node().value;
         document.getElementById('unitlabel').innerHTML = 'Kcal:';
+        document.getElementById('unitlabel').style.color = "blue";
 
         data = []
         DropdownObjectKcal("#radar-dropdown", datas, nutrienttypes, maxes, data, grams);
@@ -138,6 +153,7 @@ var RadarData = function(){
 
   })
 };
+
 
 // function if barchart is called through dropdown menu
 var BarData = function() {
@@ -188,6 +204,7 @@ var BarData = function() {
   });
 };
 
+
 // function if barchart is called through linked views
 var LinkedBarData = function(nutrientname, pickedfruit) {
   // clear previously drawn svg
@@ -232,9 +249,10 @@ var LinkedBarData = function(nutrientname, pickedfruit) {
   })
 };
 
+
 // function if barchart is called through dropdown menu
 var ScatterData = function() {
-  scatterconfig = {margin: 40, w: 1000, h: 500};
+  scatterconfig = {margin: 50, w: 1000, h: 500};
 
   // function to change bar chart when new nutrient is chosen in dropdown
   d3.select("#scatter-dropdown").on("change",function(d) {
@@ -275,6 +293,7 @@ var ScatterData = function() {
   });
 };
 
+
 var LinkedScatterData = function(nutrientname, pickedfruit) {
   scatterconfig = {margin: 40, w: 1000, h: 500};
 
@@ -308,8 +327,48 @@ var LinkedScatterData = function(nutrientname, pickedfruit) {
   })
 };
 
+
+// sort objects
 var ObjectSorter = function(arr, key) {
   return arr.sort((a, b) => {
       return a[key] - b[key];
   });
+};
+
+
+// creates dataset with amount of nutrients per X calories
+var DropdownObjectKcal = function(ddName, datas, nutrienttypes, maxes, data, grams) {
+  // get string of selected dropdown item
+  var selected = d3.select(ddName).node().value;
+
+  // ensure only a matching nutrient name can be selected
+  if (selected != "Choose a fruit") {
+    // loop through nutrition dict of each fruit
+    for (i = 0; i < nutrienttypes.length; i++) {
+      value = (datas[selected][nutrienttypes[i]] / datas[selected]["Energy in kcal"]) * grams;
+      name = nutrienttypes[i];
+      max = maxes[i]
+      var dict = {"nutrient": name, "value": value, "max": max, "fruitname": selected}
+      data.push(dict);
+    }
+  }
+};
+
+
+// creates dataset with amount of nutrients per X grams
+var DropdownObjectGrams = function(ddName, datas, nutrienttypes, maxes, data, grams) {
+  // get string of selected dropdown item
+  var selected = d3.select(ddName).node().value;
+
+  // ensure only a matching nutrient name can be selected
+  if (selected != "Choose a fruit") {
+    // loop through nutrition dict of each fruit
+    for (i = 0; i < nutrienttypes.length; i++) {
+      value = (datas[selected][nutrienttypes[i]] / 100) * grams;
+      name = nutrienttypes[i];
+      max = maxes[i]
+      var dict = {"nutrient": name, "value": value, "max": max, "fruitname": selected}
+      data.push(dict);
+    }
+  }
 };

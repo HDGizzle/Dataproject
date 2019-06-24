@@ -1,0 +1,63 @@
+/* Gijs Beerens - 10804463
+This file contains the styling of the various elements of the bar chart.
+It only contains styling within the histosvg canvas.
+*/
+
+/* axes font size */
+.axis { font: 11.5px sans-serif;
+
+ }
+
+/* color grey on hovering over bars */
+ rect:hover {
+   fill: #777;
+ }
+
+/* chart text styling */
+.text {
+  font: 12px sans-serif;
+}
+
+/* bar tooltip */
+.tooltip {
+  color: white;
+  position: absolute;
+  text-align: center;
+  min-width: 50px;
+  height: auto;
+  padding: 2px;
+  font: 14px sans-serif;
+  background: rgba(0,0,0,.8);
+  border: 2px solid black;
+  pointer-events: none;
+}
+
+/* information box tooltip */
+.tooltip2 {
+  color: white;
+  position: absolute;
+    display: inline;
+  text-align: center;
+  max-width: 900px;
+  height: auto;
+  padding: 2px;
+  font: 14px sans-serif;
+  background: rgba(0,0,0,.8);
+  border: 2px solid black;
+  pointer-events: none;
+}
+
+/* barchart and scatterplot axis line thickness */
+.axis path,
+.axis line {
+  fill: none;
+  stroke: #777;
+  shape-rendering: crispEdges;
+  stroke-width: 3px;
+}
+
+/* infobox Qmark styling */
+.Qmark {
+  font-size: 20px;
+  font-weight: bold;
+}
