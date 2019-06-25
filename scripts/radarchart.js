@@ -23,6 +23,7 @@ var RadarChart = {
   // remove previously defined svg
   d3.select(id).select("svg").remove();
 
+  // svg dimensions
   var g = d3.select(id)
     .append("svg")
     .attr("width", cfg.w + cfg.ExtraWidthX)
@@ -58,6 +59,7 @@ var RadarChart = {
      .style("stroke-width", "0.3px")
      .attr("transform", "translate(" + (cfg.w / 2 - levelFactor) + ", " + (cfg.h / 2 - levelFactor) + ")");
    }
+
 
   // draw the percentual values of the graph
   for(var j = 0; j < cfg.levels; j++){
@@ -121,20 +123,25 @@ var RadarChart = {
   dataValues1 = [];
   dataValues2 = [];
 
+  // console.log(dataValues1)
+
   // draw webs and tooltips
   if (typeof d !== "undefined"){
     series = 0;
     WebDrawer(d, g, cfg, total, tooltip, dataValues1);
   };
-  if (typeof d2 !== "undefined"){
+  console.log(d2)
+  if (typeof d2 !== "undefined" && d2[0].length > 2){
+    // console.log(d2);
     series = 1;
     WebDrawer(d2, g, cfg, total, tooltip, dataValues2);
   };
+  // console.log(dataValues2)
   if (typeof d !== "undefined"){
     series = 0;
     TooltipDrawer(d, g, cfg, total, tooltip, dataValues1);
   };
-  if (typeof d2 !== "undefined"){
+  if (typeof d2 !== "undefined" && d2[0].length > 2){
     series = 1;
     TooltipDrawer(d2, g, cfg, total, tooltip, dataValues2);
   };

@@ -61,8 +61,6 @@ var Scatterplot = {
 
   // axis scaling
   var xAxis = d3.axisBottom().scale(xScale);
-
-  // var yAxis = d3.axisLeft().scale(yScale);
   var yAxis = d3.axisLeft(yScale)
     .ticks(5)
     .tickFormat(function(d) {

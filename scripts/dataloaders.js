@@ -295,7 +295,7 @@ var ScatterData = function() {
 
 
 var LinkedScatterData = function(nutrientname, pickedfruit) {
-  scatterconfig = {margin: 40, w: 1000, h: 500};
+  scatterconfig = {margin: 50, w: 1000, h: 500};
 
   // clear previously drawn svg
   d3.selectAll("#scattersvg > *").remove();

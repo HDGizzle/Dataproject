@@ -22,9 +22,9 @@ https://www.w3schools.com/tags/tag_option.asp
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<link rel="stylesheet" type="text/css" href="integrated.css">
-<link rel="stylesheet" type="text/css" href="barchart.css">
-<link rel="stylesheet" type="text/css" href="radarchart.css">
+<link rel="stylesheet" type="text/css" href="page_styling/integrated.css">
+<link rel="stylesheet" type="text/css" href="page_styling/barchart.css">
+<link rel="stylesheet" type="text/css" href="page_styling/radarchart.css">
 <script src="//d3js.org/d3.v5.min.js"></script>
 <script src="scripts/barchart.js"></script>
 <script src="scripts/radarchart.js"></script>
@@ -59,15 +59,13 @@ https://www.w3schools.com/tags/tag_option.asp
   <!-- first container, contains intro to the project in text -->
   <div class="w3-content w3-container w3-padding-64" id="about">
     <h3 class="w3-center">THE FRUIT COMPARISON</h3>
-    <p class="w3-center"><em>"That fruit is seriously the best! I know because I read it on Facebook..."</em></p>
+    <p class="w3-center"><em>"Time for the facts..."</em></p>
     <p class="w3-center">Today's world is increasingly revolving around the healthy lifestyle social media and society is advertising for.
        However many false or unfair claims are made about the contents of certain fruits or
        vegetables. Superfruits do not exist, and if they do, they are not the fruits that people
        currently consider to be superfood. But what if there was a website on which you could
        see all the fruits and their nutritional values?</p>
-    <p class="w3-center">For this very reason, I proudly present the fruit comparison. On this page you can compare fruits
-      and their relevant nutrients which can help you maintain a healthy diet. Because the data is visualized, it is easier to interpret the numbers presented by the fruits themselves.
-      In such a way, you can show your Mr./Mrs. know it all fit friends the truth about the claims they might make about fruits. The buttons on top of your screen will allow you to quickly jump to your relevant figure. Enjoy!</p>
+    <p class="w3-center">For this very reason, I proudly present the fruit comparison. On this page you can compare fruits and their relevant nutrients which can help you maintain a healthy diet. Because the data is visualized, it is easier to interpret the numbers presented by the fruits themselves. You can find three different visualizations on this web page: A radar chart, a bar chart, and a scatterplot. The radar chart compares two fruits head-to-head based on 10 nutrients commonly found in fruit. The bar chart compares the amount of a certain nutrient present per 100 grams of each fruit. Finally, the radar chart compares the quantity of a nutrient to the amount of Kcal in 100 grams of each fruit. The buttons on top of your screen will allow you to quickly jump to your relevant figure. Enjoy!</p>
   </div>
 
   <!-- banner text -->
@@ -80,10 +78,7 @@ https://www.w3schools.com/tags/tag_option.asp
   <!-- first container with radar chart in it  -->
   <div class="w3-content w3-container w3-padding-64" id="HEAD-TO-HEAD FRUIT COMPARISON">
     <h3 class="w3-center">Head-to-head fruit comparison</h3>
-    <p class="w3-center"><em>Here you can compare fruit head-to-head, where the radar chart indicates what percentage of your recommended daily allowance of each relevant nutrient is met.
-       You can either select one fruit, or compare two fruits head to head to see which fruit is better than the other in terms of each relevant nutrient. The standard value is set at 100 grams, but as you can see for yourself
-       100 grams of any kind of fruit hardly contains any nutrients besides vitamin C. By changing the amount of grams the figures become more interesting, but try for yourself!
-       You can also hover over the dots to see the actual content of each nutrient.
+    <p class="w3-center"><em>Here you can compare fruit head-to-head, where the radar chart indicates what percentage of your recommended daily allowance of each relevant nutrient is met. You can either select one fruit, or compare two fruits head to head to see which fruit is better than the other in terms of each relevant nutrient. The user has two options to choose from: The amount of nutrients per X grams, or the amount of nutrients per X Kcal. This last option can be activated by clicking the toggle switch below. Also the amount of grams or Kcal can be adjusted by changing the value and pressing the compare button. When you are in grams mode, clicking one of the information dots will lead you to a bar chart of the nutrient you clicked, where the bar of the selected fruit is colored black to allow the user to instantly see how the fruit compares to all others in terms of its nutritional value. When you are in Kcal mode, clicking one of the information dots will activate a scatterplot in order to involve the amount of Kcal in the equation. Also here the dot of the selected fruit is colored black and expanded in order to instantly see its position. The standard value is set at 500 grams, which is the same weight as a box of grapes. Hovering over the information dots will reveal the actual nutritional content of the selected fruit.
     </em></p>
     <plot align="center"></plot>
     <!-- dropdowns, value entry, compare button -->
@@ -121,10 +116,7 @@ https://www.w3schools.com/tags/tag_option.asp
   <!-- second container with barchart in it  -->
   <div class="w3-content w3-container w3-padding-64" id="NUTRIENT COMPARISON">
     <h3 class="w3-center">The Nutrient Comparison</h3>
-    <p class="w3-center"><em>In this section you can compare fruits per nutrient to see how much of a certain nutrient they contain per 100 grams. The bars are sorted so that
-      it is easier to compare the different fruits with one another. Pick any kind of nutrient with the drop down menu, and the figure will redraw itself for the according nutrient.
-      The colors of the bars represent the colors of the flesh of the different fruits. The idea here was to see if any connections between color and nutrients would reveal itself when drawing the
-      figures. Unfortunately it did not, however this is also a result! Which is why i decided to keep the different colors in there.
+    <p class="w3-center"><em>In this section you can compare fruits per nutrient to see how much of a certain nutrient they contain per 100 grams. The bars are sorted so that it is easier to compare the different fruits with one another. Pick any kind of nutrient with the drop down menu, and the figure will draw itself for the according nutrient. If you hover over the bars, the exact amount of a nutrient per 100 grams will show. IMPORTANT TO THE READER: The colors of the bars represent the colors of the flesh of the different fruits. Even though it might look unorganized at times, the goal here was to see if color is somehow related to the nutritional contents of fruits. Surprise… It does! Check out the bar chart for vitamin A, and see that orange fruits contain more vitamin A than others. If you are not so familiar with nutrients and their effects, hover over the question mark box in the top left of the figure. This will provide you with some additional information about the nutrient, and what happens if you consume too much or too little of it.
     </em></p>
     <plot align="center"></plot>
     <select id="barchart-dropdown">
@@ -161,11 +153,8 @@ https://www.w3schools.com/tags/tag_option.asp
   <!-- third container with scatterplot in it -->
   <div class="w3-content w3-container w3-padding-64" id="CALORIE TO NUTRIENT COMPARISON">
     <h3 class="w3-center">Head-to-head Nutrient comparison</h3>
-    <p class="w3-center"><em>In this section you can see if any nutrients present in fruit have some kind of relationship to the amount of calories present in the fruit. The y-axis of the
-      scatterplot has calories as a standard, whereas the x-axis changes upon changing the nutrient in the drop down menu. From what I have seen so far, only carbohydrates and sugar are related
-      to the amount of calories present in fruits, but see for yourself if you find anything revealing!
+    <p class="w3-center"><em>In Dutch there is a saying, you cannot compare apples with pears. A banana for example, is very rich in various nutrients, but also contains much more energy than for example watermelon. What if you want to eat healthy, but also want to watch your Kcal intake? In this section you can see if any nutrients present in fruit have some kind of relationship to the amount of calories present in the fruit, but also if a fruit with a high nutritional value has any cousins that might have a lower Kcal count. The y-axis of the scatterplot has calories as a standard, whereas the x-axis changes upon changing the nutrient in the drop down menu. See for yourself if you find anything revealing!
     </em></p>
-    <plot align="center"></plot>
     <select id="scatter-dropdown">
       <option>Choose a nutrient</option>
       <option value="Carbohydrate, by difference in gram">Carbohydrates (gram)</option>
@@ -183,6 +172,7 @@ https://www.w3schools.com/tags/tag_option.asp
       <option value="Vitamin B-6 in milligram">Vitamin B-6 (milligram)</option>
       <option value="Vitamin C, total ascorbic acid in milligram">Vitamin C (milligram)</option>
     </select>
+    <plot align="center"></plot>
     <svg id="scattersvg" align="center"></svg>
     <script>
       ScatterData();

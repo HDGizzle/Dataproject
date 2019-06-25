@@ -28,21 +28,21 @@ body, html {
     background-size: cover;
 }
 
-/* first image */
+/* first banner */
 .bgimg-1 {
-    background-image: url('images/010101.jpg');
+    background-image: url('010101.jpg');
     min-height: 100%;
 }
 
-/* second image */
+/* second banner */
 .bgimg-2 {
-    background-image: url("images/fruitbanner.jpg");
+    background-image: url("fruitbanner.jpg");
     min-height: 400px;
 }
 
-/* third image */
+/* third banner */
 .bgimg-3 {
-    background-image: url('images/moleculenbanner.jpg');
+    background-image: url("moleculenbanner.jpg");
 }
 
 /* header styling */
