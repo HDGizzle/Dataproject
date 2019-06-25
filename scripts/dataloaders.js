@@ -86,6 +86,7 @@ var RadarData = function(){
       dataz2 = [data2]
     })
 
+
     // if switch is clicked, create new datasets and draw figure
     d3.select("#Kcaltoggle").on("click", function(d){
       var checkBox = document.getElementById("Kcaltoggle");

@@ -60,7 +60,6 @@ var RadarChart = {
      .attr("transform", "translate(" + (cfg.w / 2 - levelFactor) + ", " + (cfg.h / 2 - levelFactor) + ")");
    }
 
-
   // draw the percentual values of the graph
   for(var j = 0; j < cfg.levels; j++){
     var levelFactor = cfg.factor * radius * ((j + 1) / cfg.levels);
@@ -81,6 +80,7 @@ var RadarChart = {
      .attr("fill", "#737373")
      .text((j+1)*100/cfg.levels);
    }
+ }
 
   // initiate axis variable
   var axis = g.selectAll(".axis")
@@ -123,20 +123,15 @@ var RadarChart = {
   dataValues1 = [];
   dataValues2 = [];
 
-  // console.log(dataValues1)
-
   // draw webs and tooltips
   if (typeof d !== "undefined"){
     series = 0;
     WebDrawer(d, g, cfg, total, tooltip, dataValues1);
   };
-  console.log(d2)
   if (typeof d2 !== "undefined" && d2[0].length > 2){
-    // console.log(d2);
     series = 1;
     WebDrawer(d2, g, cfg, total, tooltip, dataValues2);
   };
-  // console.log(dataValues2)
   if (typeof d !== "undefined"){
     series = 0;
     TooltipDrawer(d, g, cfg, total, tooltip, dataValues1);
