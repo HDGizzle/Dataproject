@@ -80,7 +80,6 @@ var RadarChart = {
      .attr("fill", "#737373")
      .text((j+1)*100/cfg.levels);
    }
- }
 
   // initiate axis variable
   var axis = g.selectAll(".axis")
