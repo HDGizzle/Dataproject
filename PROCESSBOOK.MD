@@ -109,3 +109,28 @@ Today I structured my files into correct folders, in a hopefully desirable struc
 
 ### May 26th (day 25)
 Today I spent all day getting my additional nutrient information in place. It was more work than expected, 2800 words. 
+
+### May 31st (day 26)
+Today I have added all the nutrient information to the nutrient info box. I also start looking at the feedback. The feedback advises me to use colorbrewer for the bars, but this is not possible because the colors I use have a meaning and can therefore not be changed. 
+
+### June 8th (day 27) 
+Because of the condition that the figures have to be linked views, I come up with the idea to make a toggle switch for the radar chart. The idea is that by pressing a switch you can switch between amount of nutrients per X calories and amount of nutrients per X grams. A full day of coding results in little however, since I have to change a lot of code structure. 
+
+
+### June 9th (day 28)
+I manage to get the switch working! However I still need to add an indicator that it switches between grams and calories, so I come up with a changing unit label. Also the figure crashes when I attempt do switch twice. 
+
+### June 15th (day 29)
+I manage to get the toggle switch to work properly. Furthermore I add the linked views to the radarchart. If you are in grams mode and click on an info dot, you get a barchart, if you are in calories you get a scatterplot. 
+
+### June 21st (day 30)
+I decide to add a condition to the linked views charts so that you can instantly know where the fruit is situated between the other fruits. I decide to make it solid black to increase the contrast to the other bars/dots. Now I start to organize the code in order to make it readable. I also add comments. 
+
+### June 23rd (day 31)
+Today I have been working at the cosmetics and bugs of the project. For example I moved the top menu, but also changed the label color of the unit measurement in the radar chart section in order to make the toggle switch color match the label color. This should make things more clear and obvious. 
+
+### June 24th (day 32, working at night)
+Finalizing the project! Making sure everything is commented, indented properly and the div elements are placed correctly within the HTML page. 
+
+### June 25th (day33, working at night) 
+Finishing up! Add a MD doc with all sources, delete unneccesary files, adjust the HTML page text a little bit to make it more informative. Handed in the project! 
